@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.paywithqrcode.PayWithQrCodePaymentDataViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/telenetColorSurface"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/telenetColorPrimary"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/payWithQrCodePaymentDataIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/pay_with_qr_code_payment_data_icon"
+                    android:translationZ="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/pay_with_qr_code_content_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/payWithQrCodePaymentDataIcon" />
+
+                <TextView
+                    android:id="@+id/payWithQrCodePaymentDataEstablishment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.establishmentName}"
+                    android:textColor="@color/telenetColorOnBackground"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataIcon"
+                    tools:text="Sabor do Cerrado" />
+
+                <TextView
+                    android:id="@+id/payWithQrCodePaymentDataAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.establishmentAddress}"
+                    android:textColor="@color/telenetLightColorOnBackground"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataEstablishment"
+                    tools:text="R. Mato Grosso 960, LJ 03\nSanto Agostinho - Belo Horizonte - MG" />
+
+                <View
+                    android:id="@+id/payWithQrCodePaymentDataEstablishmentDataDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="23dp"
+                    android:background="@color/telenetColorDividerOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataAddress" />
+
+                <TextView
+                    android:id="@+id/payWithQrCodePaymentDataTransactionValueLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/pay_with_qr_code_payment_data_transaction_value"
+                    android:textColor="@color/telenetLightColorOnBackground"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataEstablishmentDataDivider" />
+
+                <TextView
+                    android:id="@+id/payWithQrCodePaymentDataTransactionValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.transactionValue}"
+                    android:textColor="@color/telenetColorOnBackground"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataTransactionValueLabel"
+                    app:symbolTextSize="@{@dimen/home_card_balance_symbol_text_size}"
+                    tools:text="R$ 18,90" />
+
+                <TextView
+                    android:id="@+id/payWithQrCodePaymentDataTransactionInstalments"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@{@string/pay_with_qr_code_payment_data_transaction_condition_format(viewModel.transactionCondition)}"
+                    android:textColor="@color/telenetLightColorOnBackground"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataTransactionValue"
+                    tools:text="em 1x" />
+
+                <View
+                    android:id="@+id/payWithQrCodePaymentDataTransactionValueDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="23dp"
+                    android:background="@color/telenetColorDividerOnSurface"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataTransactionInstalments" />
+
+                <ImageView
+                    android:id="@+id/payWithQrCodePaymentDataCardIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/pay_with_qr_code_payment_data_card"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataTransactionValueDivider" />
+
+                <TextView
+                    android:id="@+id/payWithQrCodePaymentDataCardLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.cardLabel}"
+                    android:textColor="@color/telenetLightColorOnBackground"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataCardIcon"
+                    tools:text="Cartão Alimentação" />
+
+                <TextView
+                    android:id="@+id/payWithQrCodePaymentDataCardLastDigits"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.cardLastDigits}"
+                    android:textColor="@color/telenetLightColorOnBackground"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataCardLabel"
+                    tools:text="**** 3490" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/button_client"
+                    android:fontFamily="@font/font_regular"
+                    android:onClick="@{() -> viewModel.payClicked()}"
+                    android:text="@string/pay_with_qr_code_payment_data_pay"
+                    android:textAllCaps="false"
+                    android:textColor="@color/button_client"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/payWithQrCodePaymentDataEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/payWithQrCodePaymentDataStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/payWithQrCodePaymentDataCardLastDigits"
+                    app:layout_constraintVertical_bias="1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/payWithQrCodePaymentDataStartGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="24dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/payWithQrCodePaymentDataEndGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="24dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.home.HomeViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/telenetColorBackground">
+
+        <ImageView
+            android:id="@+id/homeNavHeaderUserPicture"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@{viewModel.picture}"
+            app:circleCrop="@{true}"
+            app:invisible="@{!safeUnbox(viewModel.hasPicture)}"
+            app:layout_constraintBottom_toBottomOf="@+id/homeNavHeaderBottomGuideline"
+            app:layout_constraintStart_toStartOf="@+id/homeNavHeaderStartGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/homeNavHeaderTopGuideline"
+            tools:ignore="ContentDescription"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/home_nav_header_default_picture_bg"
+            android:fontFamily="@font/font_regular"
+            android:gravity="center"
+            android:text="@{viewModel.nameInitials}"
+            android:textColor="@color/telenetColorSecondaryVariant"
+            android:textSize="30sp"
+            app:gone="@{safeUnbox(viewModel.hasPicture)}"
+            app:layout_constraintBottom_toBottomOf="@+id/homeNavHeaderUserPicture"
+            app:layout_constraintEnd_toEndOf="@+id/homeNavHeaderUserPicture"
+            app:layout_constraintStart_toStartOf="@+id/homeNavHeaderUserPicture"
+            app:layout_constraintTop_toTopOf="@+id/homeNavHeaderUserPicture"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="JP"
+            tools:visibility="gone" />
+
+        <TextView
+            android:id="@+id/homeNavHeaderUserEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_bold"
+            android:maxLines="1"
+            android:text="@{viewModel.name}"
+            android:textColor="@color/telenetColorOnBackground"
+            app:autoSizeMaxTextSize="13sp"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/terminalNumber"
+            app:layout_constraintEnd_toStartOf="@+id/homeNavHeaderEndGuideline"
+            app:layout_constraintStart_toEndOf="@+id/homeNavHeaderUserPicture"
+            app:layout_constraintTop_toBottomOf="@+id/homeNavHeaderTopGuideline"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="João Pedro" />
+
+        <TextView
+            android:id="@+id/terminalNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_regular"
+            android:maxLines="1"
+            android:text="@{viewModel.email}"
+            android:textColor="@color/telenetColorOnBackground"
+            app:autoSizeMaxTextSize="12sp"
+            app:autoSizeMinTextSize="10sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@+id/homeNavHeaderBottomGuideline"
+            app:layout_constraintEnd_toEndOf="@+id/homeNavHeaderUserEmail"
+            app:layout_constraintStart_toStartOf="@+id/homeNavHeaderUserEmail"
+            app:layout_constraintTop_toBottomOf="@+id/homeNavHeaderUserEmail"
+            tools:text="joaopedro@mail.com.br" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/homeNavHeaderTopGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="40dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/homeNavHeaderStartGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/homeNavHeaderBottomGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="32dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/homeNavHeaderEndGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/telenetColorDividerOnSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

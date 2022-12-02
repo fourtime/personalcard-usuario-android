@@ -1,0 +1,245 @@
+<resources>
+
+    <string name="app_name">Personal Card - Usuário</string>
+
+    <!-- General -->
+    <string name="empty"/>
+
+    <!-- Mask -->
+    <string name="mask_dynamic_phone_phone">([00]) [0000]-[00000]</string>
+    <string name="mask_dynamic_phone_mobile">([00]) [00000]-[00000]</string>
+    <string name="mask_cnpj">[00].[000].[000]/[0000]-[00]</string>
+    <string name="mask_cpf">[000].[000].[000]-[00]</string>
+    <string name="mask_date">[00]/[00]/[0000]</string>
+
+    <!-- Dialog -->
+    <string name="dialog_loading">Carregando…</string>
+
+    <string name="dialog_generic_error_message">Ops! Ocorreu um erro inesperado. Caso persista, entre em contato conosco.</string>
+    <string name="dialog_generic_error_button_text">Fechar</string>
+    <string name="dialog_no_connection_error_message">Parece que você está sem conexão com a internet, tente novamente.</string>
+    <string name="dialog_no_connection_button_text">Tentar novamente</string>
+    <string name="dialog_invalid_qr_code_message">QR Code inválido.</string>
+    <string name="dialog_custom_error_button_text">Fechar</string>
+
+    <!-- Toolbar titles -->
+    <string name="toolbar_title_edit_profile">Editar perfil</string>
+    <string name="toolbar_title_change_password">Alterar senha</string>
+    <string name="toolbar_title_pay_with_qr_code">Pagar com QR Code</string>
+    <string name="toolbar_title_accredited_network" formatted="true">Rede credenciada - %s</string>
+    <string name="toolbar_title_accredited_network_filter">Filtro</string>
+    <string name="toolbar_title_accredited_network_filter_results">Resultados</string>
+
+    <!-- Pre Login -->
+    <string name="pre_login_enter">Entrar</string>
+
+    <!-- Initialization CPF -->
+    <string name="initialization_cpf_title">Digite seu CPF</string>
+    <string name="initialization_cpf_cpf_hint">CPF</string>
+    <string name="initialization_cpf_continue">Continuar</string>
+
+    <string name="initialization_cpf_invalid_cpf">CPF inválido.</string>
+
+    <!-- Initialization Card Last Digits -->
+    <string name="initialization_card_last_digits_title">Informe os 4 últimos dígitos do seu cartão</string>
+    <string name="initialization_card_last_digits_continue">Continuar</string>
+
+    <string name="initialization_card_last_digits_invalid_last_digits">Valor inválido.</string>
+    <string name="initialization_card_last_digits_invalid_initialization_data">CPF ou últimos dígitos inválidos.</string>
+
+    <!-- Initialization Password -->
+    <string name="initialization_password_title">Digite sua senha</string>
+    <string name="initialization_password_password">Senha</string>
+    <string name="initialization_password_forgot_password">Esqueci minha senha</string>
+    <string name="initialization_password_continue">Continuar</string>
+
+    <string name="initialization_password_invalid_password">Senha incorreta.</string>
+    <string name="initialization_password_invalid_password_try_again">Senha incorreta, tente novamente.</string>
+
+    <!-- Initialization Create Password -->
+    <string name="initialization_create_password_title">Agore crie uma senha de acesso</string>
+    <string name="initialization_create_password_password">Senha</string>
+    <string name="initialization_create_password_password_confirmation">Confirmação</string>
+    <string name="initialization_create_password_continue">Continuar</string>
+
+    <string name="initialization_create_password_invalid_password">Senha inválida.</string>
+    <string name="initialization_create_password_invalid_password_confirmation">As senhas não coincidem. Por favor, tente novamente.</string>
+    <string name="initialization_create_password_invalid_password_min_lenght">Mínimo de seis caracteres.</string>
+    <string name="initialization_create_password_invalid_password_max_lenght">Máximo de oito caracteres.</string>
+
+    <!-- Initialization Email -->
+    <string name="initialization_email_title">Digite seu e-mail</string>
+    <string name="initialization_email_email">E-mail</string>
+    <string name="initialization_email_continue">Continuar</string>
+
+    <string name="initialization_email_invalid_email">E-mail inválido</string>
+
+    <!-- Initialization Welcome -->
+    <string name="initialization_welcome_title" formatted="true">Boas-vindas, %s</string>
+    <string name="initialization_welcome_first_access_message">Utilize o seu CPF e a senha que acabou de criar para entrar nas próximas vezes.</string>
+    <string name="initialization_welcome_message">Informe seu e-mail para completarmos seu cadastro.</string>
+    <string name="initialization_welcome_email">E-mail</string>
+    <string name="initialization_welcome_enter">Entrar</string>
+    <string name="initialization_welcome_conclude">Concluir</string>
+
+    <!-- Initialization Forgot Password -->
+    <string name="initialization_forgot_password_title">Recuperação de senha</string>
+    <string name="initialization_forgot_password_message">Digite o CPF associado à sua conta.</string>
+    <string name="initialization_forgot_password_cpf">CPF</string>
+    <string name="initialization_forgot_password_continue">Continuar</string>
+    <string name="initialization_forgot_password_help">Ajuda</string>
+
+    <string name="initialization_forgot_password_invalid_cpf">CPF inválido, tente novamente ou entre em contato conosco.</string>
+
+    <!-- Initialization Forgot Password Confirmation -->
+    <string name="initialization_forgot_password_confirmation_title">E-mail enviado</string>
+    <string name="initialization_forgot_password_confirmation_first_access_message">Enviamos um e-mail com instruções para o endereço associado à sua conta, confira sua caixa de entrada.</string>
+    <string name="initialization_forgot_password_confirmation_login">Fazer login</string>
+
+    <!-- Initialization Recovery Password Success -->
+    <string name="recovery_password_success_title">E-mail enviado</string>
+    <string name="recovery_password_success_message">Enviamos um e-mail com instruções para o endereço associado à sua conta, confira sua caixa de entrada.</string>
+    <string name="recovery_password_success_login">Fazer login</string>
+
+    <!-- Home -->
+    <string name="home_nav_edit_profile">Editar perfil</string>
+    <string name="home_nav_change_password">Alterar senha</string>
+    <string name="home_nav_support">Atendimento</string>
+    <string name="home_nav_terms_of_use">Termos de uso</string>
+    <string name="home_nav_privacy_policy">Política de privacidade</string>
+    <string name="home_nav_rate_app">Avaliar aplicativo</string>
+    <string name="home_nav_exit">Sair</string>
+    <string name="home_accredited_network">Rede\ncredenciada</string>
+    <string name="home_pay_with_qr_code">Pagar com\nQR Code</string>
+    <string name="home_block_card">Bloquear\ncartão</string>
+
+    <!-- Home Card -->
+    <string name="home_card_balance">Saldo disponível</string>
+    <string name="home_card_next_recharge">Próxima recarga</string>
+    <string name="home_card_next_renovation">Próxima renovação</string>
+    <string name="home_card_average_daily_balance">Saldo médio diário</string>
+
+    <!-- Home Card Statement -->
+    <string name="home_card_statement_option_1">15 dias</string>
+    <string name="home_card_statement_option_2">30 dias</string>
+    <string name="home_card_statement_option_3">90 dias</string>
+    <string name="home_card_statement_title">Extrato</string>
+    <string name="home_card_statement_no_content">Sem movimentações no período selecionado.</string>
+
+    <!-- Home Card Statement - List-->
+    <string name="home_card_statement_extract_installments" formatted="true">%s x</string>
+    <string name="toast_home_card_statement_extract_authorization" formatted="true">Autorização: %s</string>
+
+    <!-- Change Password -->
+    <string name="change_password_current_password">Senha atual</string>
+    <string name="change_password_new_password">Nova senha</string>
+    <string name="change_password_new_password_confirmation">Confirmação de senha</string>
+    <string name="change_password_save">Salvar nova senha</string>
+    <string name="change_password_invalid_current_password">Senha atual incorreta. Por favor, tente Novamente.</string>
+    <string name="change_password_invalid_password_confirmation">As senhas não coincidem. Por favor, tente novamente.</string>
+    <string name="change_password_invalid_password_min_lenght">Mínimo de seis caracteres, incluindo letras e números.</string>
+    <string name="change_password_invalid_password_max_lenght">Máximo de oito caracteres, incluindo letras e números.</string>
+    <string name="change_password_dialog_message_confirm_success">Senha alterada com sucesso</string>
+    <string name="change_password_dialog_button_confirm_success">Concluir</string>
+
+    <!-- Edit Profile-->
+    <string name="edit_profile_name_hint">Nome</string>
+    <string name="edit_profile_phone_hint">Telefone</string>
+    <string name="edit_profile_email_hint">E-mail</string>
+    <string name="edit_profile_birth_date_hint">Data de Nascimento</string>
+    <string name="edit_profile_menu_save">Salvar</string>
+    <string name="edit_profile_change_profile_picture">Alterar foto do perfil</string>
+    <string name="edit_profile_change_profile_picture_camera">Tirar uma foto</string>
+    <string name="edit_profile_change_profile_picture_gallery">Escolher na galeria</string>
+    <string name="edit_profile_crop_picture">Ajuste sua foto</string>
+
+    <string name="edit_profile_mask_birth_date">[00]/[00]/[0000]</string>
+    <string name="edit_profile_pattern_birth_date">dd/MM/yyyy</string>
+
+    <string name="edit_profile_validation_invalid_picture">Foto inválida.</string>
+    <string name="edit_profile_validation_invalid_phone">Telefone inválido.</string>
+    <string name="edit_profile_validation_invalid_email">E-mail inválido.</string>
+    <string name="edit_profile_validation_invalid_birth_date">Data de nascimento inválida.</string>
+
+    <string name="edit_profile_permission_camera_rationale_title">Permita o acesso à câmera</string>
+    <string name="edit_profile_permission_camera_rationale_message">Parar tirar fotos, precisamos ter acesso a sua câmera.</string>
+    <string name="edit_profile_permission_camera_rationale_confirm">Permitir</string>
+    <string name="edit_profile_permission_camera_rationale_cancel">Agora não</string>
+    <string name="edit_profile_permission_camera_never_ask_again_message">Permissão negada, para habilitá-la acesse as configurações do app.</string>
+    <string name="edit_profile_permission_camera_never_ask_again_action">Configurações</string>
+    <string name="edit_profile_permission_gallery_rationale_title">Permita o acesso à galeria</string>
+    <string name="edit_profile_permission_gallery_rationale_message">Parar escolher uma foto, precisamos ter acesso a sua galeria.</string>
+    <string name="edit_profile_permission_gallery_rationale_confirm">Permitir</string>
+    <string name="edit_profile_permission_gallery_rationale_cancel">Agora não</string>
+    <string name="edit_profile_permission_gallery_never_ask_again_message">Permissão negada, para habilitá-la acesse as configurações do app.</string>
+    <string name="edit_profile_permission_gallery_never_ask_again_action">Configurações</string>
+
+    <!-- Pay with QR Code Reader -->
+    <string name="pay_with_qr_code_reader_message">Posicione o QR Code no quadrado\nabaixo para que seja escaneado.</string>
+    <string name="pay_with_qr_code_reader_invalid_token">O QR Code lido não é válido. Tente novamente com outro QR Code ou entre em contato com a operadora.</string>
+
+    <string name="pay_with_qr_code_reader_permission_camera_rationale_title">Permita o acesso à câmera</string>
+    <string name="pay_with_qr_code_reader_permission_camera_rationale_message">Parar ler o QR Code, precisamos ter acesso a sua câmera.</string>
+    <string name="pay_with_qr_code_reader_permission_camera_rationale_confirm">Permitir</string>
+    <string name="pay_with_qr_code_reader_permission_camera_rationale_cancel">Agora não</string>
+    <string name="pay_with_qr_code_reader_permission_camera_never_ask_again_message">Permissão negada, para habilitá-la acesse as configurações do app.</string>
+    <string name="pay_with_qr_code_reader_permission_camera_never_ask_again_action">Configurações</string>
+
+    <!-- Pay with QR Code Payment Data -->
+    <string name="pay_with_qr_code_payment_data_transaction_value">Valor da operação:</string>
+    <string name="pay_with_qr_code_payment_data_pay">Pagar</string>
+    <string name="pay_with_qr_code_payment_data_1x">1x</string>
+    <string name="pay_with_qr_code_payment_data_chash_payment">À vista</string>
+    <string name="pay_with_qr_code_payment_data_chash_payment_dialog_message">Cartão selecionado permite somente pagamento à vista. Deseja continuar?</string>
+    <string name="pay_with_qr_code_payment_data_chash_payment_dialog_confirm_button">Continuar</string>
+    <string name="pay_with_qr_code_payment_data_chash_payment_dialog_neutral_button">Cancelar</string>
+
+    <string name="pay_with_qr_code_payment_data_transaction_condition_format" formatted="true">em %s</string>
+
+    <!-- Pay with QR Code Card Password -->
+    <string name="pay_with_qr_code_card_password_message">Digite a senha do seu cartão</string>
+    <string name="pay_with_qr_code_card_password_pay">Pagar</string>
+    <string name="hide_password_character">*</string>
+
+    <!-- Pay with QR Code Success -->
+    <string name="pay_with_qr_code_success_message">Pagamento realizado\ncom sucesso!</string>
+    <string name="pay_with_qr_code_success_transaction_value">Valor:</string>
+    <string name="pay_with_qr_code_success_transaction_date">Data:</string>
+    <string name="pay_with_qr_code_success_transaction_time">Hora:</string>
+    <string name="pay_with_qr_code_success_transaction_authorization">Autorização:</string>
+    <string name="pay_with_qr_code_success_transaction_number">Transação:</string>
+    <string name="pay_with_qr_code_success_conclude">Concluir</string>
+
+    <string name="pay_with_qr_code_success_pattern_transaction_date">dd/MM/yyyy</string>
+    <string name="pay_with_qr_code_success_pattern_transaction_time">HH:mm</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="pay_with_qr_code_ivalid_password_dialog_title">Senha Incorreta</string>
+    <string name="pay_with_qr_code_ivalid_password_dialog_message">Parece que você digitou a senha incorretamente, tente novamente.</string>
+    <string name="pay_with_qr_code_ivalid_password_dialog_confirm_text">OK</string>
+
+    <string name="pay_with_qr_code_unknow_error_dialog_title">Ops!</string>
+    <string name="pay_with_qr_code_unknow_error_dialog_message">Ocorreu um erro inesperado, tente realizar a transação novamente.</string>
+    <string name="pay_with_qr_code_unknow_error_dialog_confirm_text">OK</string>
+
+    <!-- Accredited Network Filters -->
+    <string name="accredited_network_filter_result_empty_list">Ops! Não encontramos nenhum \nestabelecimento credenciado.</string>
+    <string name="accredited_network_filter_selector_title">Selecione uma opção</string>
+    <string name="accredited_network_filter_default_selection">TODOS</string>
+
+    <string name="accredited_network_filter_title_segment">Segmento</string>
+    <string name="accredited_network_filter_title_activity_branch">Ramo de atividade</string>
+    <string name="accredited_network_filter_title_speciality">Especialidade</string>
+    <string name="accredited_network_filter_title_uf">Estado</string>
+    <string name="accredited_network_filter_title_city">Cidade</string>
+    <string name="accredited_network_filter_title_neighborhod">Bairro</string>
+
+    <!-- Notification Chanel -->
+    <string name="notification_channel_id_default">default</string>
+    <string name="notification_channel_name_default">Geral</string>
+    <string name="notification_channel_description_default">Notificações gerais</string>
+
+    <!-- Timeout error message -->
+    <string name="transaction_timeout_error_message">Ops! A operação pode não ter sido realizada. Por favor verifique seu extrato para confirmar.</string>
+
+</resources>

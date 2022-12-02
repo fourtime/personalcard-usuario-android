@@ -1,0 +1,7 @@
+/build
+/debug
+/release
+dev/debug
+dev/release
+prod/debug
+prod/release

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.accreditednetwork.AccreditedNetworkMapViewModel" />
+
+        <variable
+            name="onClickShowMyLocation"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onClickCallToNetwork"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onClickGoToNetwork"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/telenetColorSurface"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/accreditedNetworkMapIconFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:elevation="4dp"
+                android:onClick="@{() -> viewModel.filterClicked()}"
+                android:scaleType="center"
+                android:src="@drawable/ic_filtro"
+                app:elevation="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/accreditedNetworkMapIconGPS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:onClickListener="@{onClickShowMyLocation}"
+                android:scaleType="center"
+                android:src="@drawable/ic_gps"
+                app:elevation="4dp"
+                app:visible="@{viewModel.hasUserLocation}"
+                app:layout_constraintBottom_toTopOf="@+id/accreditedNetworkDetail"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <View
+                android:id="@+id/c"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:translationZ="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/accreditedNetworkMapIconGPS" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/accreditedNetworkDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_accredited_network_detail"
+                android:paddingBottom="24dp"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:visible="@{viewModel.hasSelectedAccreditedNetwork}">
+
+                <ImageView
+                    android:id="@+id/accreditedNetworkMapDetailsIconLocation"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/icon_accredited_network_list"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/AccreditedNetworkDetailTitleNetworkDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="@font/font_regular"
+                    android:text="@{viewModel.selectedAccreditedNetworkFantasyName}"
+                    android:textColor="@color/telenetColorAccreditedNetworkDetailsTitle"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/accreditedNetworkMapDetailsIconLocation"
+                    app:layout_constraintTop_toTopOf="@id/accreditedNetworkMapDetailsIconLocation"
+                    tools:text="Sabor do Cerrado" />
+
+                <TextView
+                    android:id="@+id/accreditednetworkDetailAddressNetworkDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/font_regular"
+                    android:text="@{viewModel.selectedAccreditedNetworkAddress}"
+                    android:textColor="@color/telenetColorAccreditedNetworkDetailsTitle"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@id/accreditedNetworkMapDetailsIconLocation"
+                    app:layout_constraintTop_toBottomOf="@id/AccreditedNetworkDetailTitleNetworkDetail"
+                    tools:text="R. Mato Grosso 960, LJ 03
+                                    Santo Agostinho - Belo Horizonte - MG
+                                    30110-051" />
+
+                <View
+                    android:id="@+id/divisorView"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15.5dp"
+                    android:background="#f5f5f5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/accreditednetworkDetailAddressNetworkDetail" />
+
+                <Button
+                    android:id="@+id/accreditedNetworkMapDetailsButtonCall"
+                    android:layout_width="162dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="23.5dp"
+                    android:background="@drawable/button_client_enabled"
+                    android:drawableLeft="@drawable/accredited_network_detail_call"
+                    android:fontFamily="@font/font_regular"
+                    android:onClickListener="@{onClickCallToNetwork}"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="45dp"
+                    android:text="Ligar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divisorView" />
+
+                <Button
+                    android:id="@+id/accreditedNetworkMapDetailsButtonRoute"
+                    android:layout_width="162dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="23.5dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@drawable/button_client_enabled"
+                    android:drawableLeft="@drawable/accredited_network_detail_route"
+                    android:fontFamily="@font/font_regular"
+                    android:onClickListener="@{onClickGoToNetwork}"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="45dp"
+                    android:text="Rotas"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divisorView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/d"
+                android:layout_width="0dp"
+                android:layout_height="340dp"
+                android:background="#000"
+                android:gravity="center"
+                android:translationZ="100dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="br.com.tln.personalcard.usuario.ui.accreditednetwork.AccreditedNetworkFilterViewModel"/>
+
+        <variable
+                name="onClickSegmentSelector"
+                type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="onClickActivityBranchSelector"
+                type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="onClickActivitySpecialty"
+                type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="onClickUFSelector"
+                type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="onClickCitySelector"
+                type="android.view.View.OnClickListener"/>
+
+        <variable
+                name="onClickNeighborhoodSelector"
+                type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/telenetColorSurface"
+            android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/tvSegmentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/font_regular"
+                    android:text="@string/accredited_network_filter_title_segment"
+                    android:textColor="@color/telenetColorFilterTitles"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                    android:id="@+id/tvSegmentList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/font_regular"
+                    android:textColor="@color/telenetColorFilterLists"
+                    android:textSize="14sp"
+                    android:text="@{viewModel.selectedSegmentName}"
+                    app:layout_constraintStart_toStartOf="@id/tvSegmentTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvSegmentTitle"/>
+
+            <ImageView
+                    android:id="@+id/ivOpenListSegment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:onClickListener="@{onClickSegmentSelector}"
+                    android:src="@drawable/icon_filter_open_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSegmentTitle"/>
+
+            <View
+                    android:id="@+id/divisorSegment"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/telenetColorFilterDivisor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSegmentList"/>
+
+            <androidx.constraintlayout.widget.Group
+                    android:id="@+id/groupSpeciality"
+                    app:visible="@{safeUnbox(viewModel.isSpeciality)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="tvSpecialityTitle,tvSpecialityList,ivOpenListSpeciality,divisorSpeciality"/>
+
+            <TextView
+                    android:id="@+id/tvSpecialityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/font_regular"
+                    android:text="@string/accredited_network_filter_title_speciality"
+                    android:textColor="@color/telenetColorFilterTitles"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divisorSegment"/>
+
+            <TextView
+                    android:id="@+id/tvSpecialityList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/font_regular"
+                    android:textColor="@color/telenetColorFilterLists"
+                    android:textSize="14sp"
+                    android:text="@{viewModel.selectedSpecialtyName}"
+                    app:layout_constraintStart_toStartOf="@id/tvSpecialityTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvSpecialityTitle"
+                    tools:text="Todos"/>
+
+            <ImageView
+                    android:id="@+id/ivOpenListSpeciality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:onClickListener="@{onClickActivitySpecialty}"
+                    android:src="@drawable/icon_filter_open_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSpecialityTitle"/>
+
+            <View
+                    android:id="@+id/divisorSpeciality"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/telenetColorFilterDivisor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSpecialityList"/>
+
+            <TextView
+                    android:id="@+id/tvStateTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/font_regular"
+                    android:text="@string/accredited_network_filter_title_uf"
+                    android:textColor="@color/telenetColorFilterTitles"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divisorSpeciality"/>
+
+            <TextView
+                    android:id="@+id/tvStateList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/font_regular"
+                    android:textColor="@color/telenetColorFilterLists"
+                    android:textSize="14sp"
+                    android:text="@{viewModel.selectedUFname}"
+                    app:layout_constraintStart_toStartOf="@id/tvStateTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvStateTitle"
+                    tools:text="Todos"/>
+
+            <ImageView
+                    android:id="@+id/ivOpenListState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:onClickListener="@{onClickUFSelector}"
+                    android:src="@drawable/icon_filter_open_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStateTitle"/>
+
+            <View
+                    android:id="@+id/divisorState"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/telenetColorFilterDivisor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStateList"/>
+
+            <TextView
+                    android:id="@+id/tvCityTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/font_regular"
+                    android:text="@string/accredited_network_filter_title_city"
+                    android:textColor="@color/telenetColorFilterTitles"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divisorState"/>
+
+            <TextView
+                    android:id="@+id/tvCityList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/font_regular"
+                    android:textColor="@color/telenetColorFilterLists"
+                    android:textSize="14sp"
+                    android:text="@{viewModel.selectedCityName}"
+                    app:layout_constraintStart_toStartOf="@id/tvCityTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvCityTitle"
+                    tools:text="Todos"/>
+
+            <ImageView
+                    android:id="@+id/ivOpenListCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:onClickListener="@{onClickCitySelector}"
+                    android:src="@drawable/icon_filter_open_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvCityTitle"/>
+
+            <View
+                    android:id="@+id/divisorCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/telenetColorFilterDivisor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvCityList"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupActivityBranch"
+                app:visible="@{safeUnbox(viewModel.isActivityBranch)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tvActivityBranchTitle,tvActivityBranchList,ivOpenListActivityBranch,divisorActivityBranch"/>
+
+            <TextView
+                android:id="@+id/tvActivityBranchTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/font_regular"
+                android:text="@string/accredited_network_filter_title_activity_branch"
+                android:textColor="@color/telenetColorFilterTitles"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divisorCity"/>
+
+            <TextView
+                android:id="@+id/tvActivityBranchList"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/font_regular"
+                android:textColor="@color/telenetColorFilterLists"
+                android:textSize="14sp"
+                android:text="@{viewModel.selectedActivityBranchName}"
+                app:layout_constraintStart_toStartOf="@id/tvActivityBranchTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvActivityBranchTitle"
+                tools:text="Todos"/>
+
+            <ImageView
+                android:id="@+id/ivOpenListActivityBranch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="22dp"
+                android:onClickListener="@{onClickActivityBranchSelector}"
+                android:src="@drawable/icon_filter_open_list"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvActivityBranchTitle"/>
+
+            <View
+                android:id="@+id/divisorActivityBranch"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="14dp"
+                android:background="@color/telenetColorFilterDivisor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvActivityBranchList"/>
+
+            <TextView
+                    android:id="@+id/tvNeighborhoodTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/font_regular"
+                    android:text="@string/accredited_network_filter_title_neighborhod"
+                    android:textColor="@color/telenetColorFilterTitles"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divisorActivityBranch"/>
+
+            <TextView
+                    android:id="@+id/tvNeighborhoodList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/font_regular"
+                    android:textColor="@color/telenetColorFilterLists"
+                    android:textSize="14sp"
+                    android:text="@{viewModel.selectedNeighborhoodName}"
+                    app:layout_constraintStart_toStartOf="@id/tvNeighborhoodTitle"
+                    app:layout_constraintTop_toBottomOf="@id/tvNeighborhoodTitle"
+                    tools:text="Todos"/>
+
+            <ImageView
+                    android:id="@+id/ivOpenListNeighborhood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="22dp"
+                    android:onClickListener="@{onClickNeighborhoodSelector}"
+                    android:src="@drawable/icon_filter_open_list"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNeighborhoodTitle"/>
+
+            <View
+                    android:id="@+id/divisorNeighborhood"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/telenetColorFilterDivisor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNeighborhoodList"/>
+
+            <Button
+                    android:id="@+id/btFiltrate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/button_client"
+                    android:fontFamily="@font/font_regular"
+                    android:enabled='@{viewModel.valid}'
+                    android:text="Filtrar"
+                    android:onClick="@{() -> viewModel.filterResultsClicked()}"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divisorNeighborhood"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</layout>

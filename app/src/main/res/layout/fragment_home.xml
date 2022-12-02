@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.home.HomeViewModel" />
+
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/telenetColorSurface"
+        app:visible="@{viewModel.hasActiveSession}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBar">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:elevation="0dp"
+                    app:elevation="0dp">
+
+                    <com.google.android.material.appbar.CollapsingToolbarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_scrollFlags="scroll|snap">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <br.com.tln.personalcard.usuario.widget.HeightWrappingViewPager
+                                android:id="@+id/pager"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="24dp"
+                                android:clipToPadding="false"
+                                android:overScrollMode="never"
+                                android:paddingStart="60dp"
+                                android:paddingEnd="60dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:background="@drawable/home_card"
+                                tools:layout_height="180dp"
+                                tools:layout_marginEnd="60dp"
+                                tools:layout_marginStart="60dp" />
+
+                            <com.rd.PageIndicatorView
+                                android:id="@+id/pageIndicatorView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/pager"
+                                app:piv_animationType="thinWorm"
+                                app:piv_dynamicCount="true"
+                                app:piv_interactiveAnimation="true"
+                                app:piv_selectedColor="#bdbdbd"
+                                app:piv_unselectedColor="#e0e0e0"
+                                app:piv_viewPager="@+id/pager" />
+
+                            <ImageView
+                                android:id="@+id/homeAccreditedNetworkIcon"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                android:layout_marginTop="32dp"
+                                android:background="@drawable/home_card_action_icon_background"
+                                android:elevation="4dp"
+                                android:scaleType="center"
+                                android:src="@drawable/home_card_action_icon_accredited_network"
+                                app:elevation="4dp"
+                                app:layout_constraintEnd_toEndOf="@+id/homeAccreditedNetwork"
+                                app:layout_constraintStart_toStartOf="@+id/homeAccreditedNetwork"
+                                app:layout_constraintTop_toBottomOf="@+id/pageIndicatorView" />
+
+
+                            <ImageView
+                                android:id="@+id/homePayWithQrCodeIcon"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                android:background="@drawable/home_card_action_icon_background"
+                                android:elevation="4dp"
+                                android:scaleType="center"
+                                android:src="@drawable/home_card_action_icon_pay_with_qr_code"
+                                app:elevation="4dp"
+                                app:layout_constraintEnd_toEndOf="@+id/homePayWithQrCode"
+                                app:layout_constraintStart_toStartOf="@+id/homePayWithQrCode"
+                                app:layout_constraintTop_toTopOf="@+id/homeAccreditedNetworkIcon" />
+
+                            <TextView
+                                android:id="@+id/homeAccreditedNetwork"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="40dp"
+                                android:fontFamily="@font/font_regular"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="@string/home_accredited_network"
+                                android:textColor="@color/telenetColorOnSurface"
+                                android:textSize="12sp"
+                                app:autoSizeMaxTextSize="12sp"
+                                app:autoSizeMinTextSize="8sp"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintTop_toBottomOf="@+id/homeAccreditedNetworkIcon"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toStartOf="@id/homePayWithQrCode"
+                                app:layout_constraintHorizontal_chainStyle="packed"/>
+
+                            <TextView
+                                android:id="@+id/homePayWithQrCode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="8dp"
+                                android:fontFamily="@font/font_regular"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:text="@string/home_pay_with_qr_code"
+                                android:textColor="@color/telenetColorOnSurface"
+                                android:textSize="12sp"
+                                app:autoSizeMaxTextSize="12sp"
+                                app:autoSizeMinTextSize="8sp"
+                                app:autoSizeTextType="uniform"
+                                app:layout_constraintTop_toBottomOf="@+id/homeAccreditedNetworkIcon"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/homeAccreditedNetwork"
+                                app:layout_constraintEnd_toEndOf="parent"/>
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:onClick="@{() -> viewModel.accreditedNetworkClicked()}"
+                                app:layout_constraintBottom_toBottomOf="@+id/homeAccreditedNetwork"
+                                app:layout_constraintEnd_toEndOf="@+id/homeAccreditedNetwork"
+                                app:layout_constraintStart_toStartOf="@+id/homeAccreditedNetwork"
+                                app:layout_constraintTop_toTopOf="@+id/homeAccreditedNetworkIcon" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:onClick="@{() -> viewModel.payWithQrCodeClicked()}"
+                                app:layout_constraintBottom_toBottomOf="@+id/homePayWithQrCode"
+                                app:layout_constraintEnd_toEndOf="@+id/homePayWithQrCode"
+                                app:layout_constraintStart_toStartOf="@+id/homePayWithQrCode"
+                                app:layout_constraintTop_toTopOf="@+id/homePayWithQrCodeIcon" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/home_statement"
+                    android:elevation="5dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <TextView
+                        android:id="@+id/itemHomeCardStatementTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/font_bold"
+                        android:maxLines="1"
+                        android:text="@string/home_card_statement_title"
+                        android:textColor="@color/telenetColorStatementTitle"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/itemHomeCardStatementSelector1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="end"
+                        android:maxLines="1"
+                        android:onClick="@{() -> viewModel.statementSelectorOption1Clicked()}"
+                        android:paddingStart="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/home_card_statement_option_1"
+                        android:textColor="@color/telenet_color_statement_selector"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/itemHomeCardStatementSelector2"
+                        app:layout_constraintHorizontal_bias="1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:selected="@{safeUnbox(viewModel.cardStatementSelectorSelectedOption) == 1}" />
+
+                    <TextView
+                        android:id="@+id/itemHomeCardStatementSelector2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_regular"
+                        android:maxLines="1"
+                        android:onClick="@{() -> viewModel.statementSelectorOption2Clicked()}"
+                        android:paddingStart="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/home_card_statement_option_2"
+                        android:textColor="@color/telenet_color_statement_selector"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/itemHomeCardStatementSelector3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:selected="@{safeUnbox(viewModel.cardStatementSelectorSelectedOption) == 2}" />
+
+                    <TextView
+                        android:id="@+id/itemHomeCardStatementSelector3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_regular"
+                        android:maxLines="1"
+                        android:onClick="@{() -> viewModel.statementSelectorOption3Clicked()}"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/home_card_statement_option_3"
+                        android:textColor="@color/telenet_color_statement_selector"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:selected="@{safeUnbox(viewModel.cardStatementSelectorSelectedOption) == 3}" />
+
+                    <View
+                        android:id="@+id/itemHomeCardStatementSelector1Divider"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/background_statement_selector_divider"
+                        app:layout_constraintEnd_toEndOf="@+id/itemHomeCardStatementSelector1"
+                        app:layout_constraintStart_toStartOf="@+id/itemHomeCardStatementSelector1"
+                        app:layout_constraintTop_toBottomOf="@+id/itemHomeCardStatementSelector1"
+                        app:selected="@{safeUnbox(viewModel.cardStatementSelectorSelectedOption) == 1}" />
+
+                    <View
+                        android:id="@+id/itemHomeCardStatementSelector2Divider"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/background_statement_selector_divider"
+                        app:layout_constraintEnd_toEndOf="@+id/itemHomeCardStatementSelector2"
+                        app:layout_constraintStart_toStartOf="@+id/itemHomeCardStatementSelector2"
+                        app:layout_constraintTop_toTopOf="@+id/itemHomeCardStatementSelector1Divider"
+                        app:selected="@{safeUnbox(viewModel.cardStatementSelectorSelectedOption) == 2}" />
+
+                    <View
+                        android:id="@+id/itemHomeCardStatementSelector3Divider"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/background_statement_selector_divider"
+                        app:layout_constraintEnd_toEndOf="@+id/itemHomeCardStatementSelector3"
+                        app:layout_constraintStart_toStartOf="@+id/itemHomeCardStatementSelector3"
+                        app:layout_constraintTop_toTopOf="@+id/itemHomeCardStatementSelector2Divider"
+                        app:selected="@{safeUnbox(viewModel.cardStatementSelectorSelectedOption) == 3}" />
+
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/swipeRefresh"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/itemHomeCardStatementTime">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:clipToPadding="false"
+                            android:orientation="vertical"
+                            android:scrollbarStyle="insideInset"
+                            android:scrollbars="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/item_home_card_statement" />
+
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginBottom="24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/itemHomeCardStatementTime"
+                        app:visible="@{safeUnbox(viewModel.loadingCardStatement)}" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/font_regular"
+                        android:gravity="center"
+                        android:scrollbars="vertical"
+                        android:text="@string/home_card_statement_no_content"
+                        android:textColor="@color/telenet_color_statement_selector"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_goneMarginEnd="32dp"
+                        app:visible="@{!safeUnbox(viewModel.loadingCardStatement) &amp;&amp; !safeUnbox(viewModel.cardStatementHasContent)}"
+                        tools:visibility="gone" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/telenetColorBackground"
+            android:fitsSystemWindows="true"
+            android:theme="@style/NavigationDrawerStyle"
+            app:headerLayout="@layout/home_nav_view_header"
+            app:itemHorizontalPadding="24dp"
+            app:itemIconPadding="16dp"
+            app:menu="@menu/nav_home"
+            tools:itemIconTint="null" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

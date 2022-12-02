@@ -1,0 +1,81 @@
+<resources>
+
+    <!-- Screen themes -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="colorPrimary">@color/telenetColorPrimary</item>
+        <item name="colorPrimaryDark">@color/telenetColorPrimaryVariant</item>
+        <item name="colorSecondary">@color/telenetColorSecondary</item>
+        <item name="colorError">@color/telenetColorError</item>
+
+        <!-- Toolbar style -->
+        <item name="toolbarStyle">@style/AppTheme.Toolbar</item>
+        <item name="drawerArrowStyle">@style/AppTheme.Drawer</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+    </style>
+
+    <style name="AppTheme.Launcher" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+
+    <!-- Dialog themes -->
+    <style name="AppTheme.Dialog" parent="android:Theme.Holo.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <!-- Toolbar styles -->
+    <style name="AppTheme.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="subtitleTextAppearance">@style/AppTheme.Toolbar.Subtitle</item>
+        <item name="titleTextAppearance">@style/AppTheme.Toolbar.Title</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:fontFamily">@font/font_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/telenetColorOnPrimary</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.Subtitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:fontFamily">@font/font_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/telenetColorOnPrimary</item>
+    </style>
+
+    <style name="AppTheme.Drawer" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/telenetColorOnPrimary</item>
+    </style>
+
+    <!-- NavigationDrawer style-->
+    <style name="NavigationDrawerStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/font_regular</item>
+    </style>
+
+    <!-- TextInputLayout styles -->
+    <style name="AppTheme.TextInputLayout.OutlinedBox.Dense" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/edit_text_hint_color</item>
+        <item name="boxStrokeColor">@color/edit_text_focused_outline_color</item>
+        <item name="hintTextAppearance">@style/AppTheme.TextInputLayout.OutlinedBox.Dense.Hint</item>
+        <item name="helperTextTextAppearance">@style/AppTheme.TextInputLayout.OutlinedBox.Dense.HelperText</item>
+        <item name="errorTextAppearance">@style/AppTheme.TextInputLayout.OutlinedBox.Dense.Error</item>
+        <item name="counterTextAppearance">@style/AppTheme.TextInputLayout.OutlinedBox.Dense.Counter</item>
+        <item name="counterOverflowTextAppearance">@style/AppTheme.TextInputLayout.OutlinedBox.Dense.Counter.Overflow
+        </item>
+    </style>
+
+    <style name="AppTheme.TextInputLayout.OutlinedBox.Dense.Hint" parent="TextAppearance.Design.Hint">
+        <item name="android:textColor">@color/edit_text_hint_color</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AppTheme.TextInputLayout.OutlinedBox.Dense.HelperText" parent="TextAppearance.Design.HelperText" />
+
+    <style name="AppTheme.TextInputLayout.OutlinedBox.Dense.Error" parent="TextAppearance.Design.Error">
+        <item name="android:textColor">@color/telenetColorError</item>
+    </style>
+
+    <style name="AppTheme.TextInputLayout.OutlinedBox.Dense.Counter" parent="TextAppearance.Design.Counter" />
+
+    <style name="AppTheme.TextInputLayout.OutlinedBox.Dense.Counter.Overflow" parent="TextAppearance.Design.Counter.Overflow" />
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <data>
+
+        <variable
+            name="accreditedNetwork"
+            type="br.com.tln.personalcard.usuario.model.AccreditedNetwork" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/ivIconAccreditedNetworkList"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="11dp"
+            android:src="@drawable/icon_accredited_network_list"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitleAccreditedNetworkList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/font_regular"
+            android:letterSpacing="-0.02"
+            android:textColor="@color/telenetColorAccreditedNetworkDetailsTitle"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/ivIconAccreditedNetworkList"
+            app:layout_constraintTop_toTopOf="@id/ivIconAccreditedNetworkList"
+            tools:text="Sabor do Cerrado" />
+
+        <TextView
+            android:id="@+id/tvAddressAccreditedNetworkList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/font_regular"
+            android:paddingBottom="12dp"
+            android:textColor="@color/telenetColorAccreditedNetworkDetailsAddress"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/ivIconAccreditedNetworkList"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleAccreditedNetworkList"
+            tools:text="R. Mato Grosso 960, Santo Agostinho" />
+
+        <TextView
+            android:id="@+id/tvDistanceAccreditedNetworkList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/font_regular"
+            android:gravity="end"
+            android:letterSpacing="-0.01"
+            android:textColor="@color/telenetColorAccreditedNetworkDetailsDistance"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivIconAccreditedNetworkList"
+            tools:text="75m" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/telenetColorDividerOnSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

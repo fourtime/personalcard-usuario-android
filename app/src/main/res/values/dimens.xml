@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Widgets -->
+    <dimen name="client_button_radius">5dp</dimen>
+    <dimen name="error_floating_label_margin_top">116dp</dimen>
+
+    <!-- Home Cards -->
+    <dimen name="home_card_balance_text_size">24sp</dimen>
+    <dimen name="home_card_balance_symbol_text_size">12sp</dimen>
+
+    <!-- Pay with QR Code Payment Data -->
+    <dimen name="pay_with_qr_ode_payment_data_transaction_value_text_size">32sp</dimen>
+    <dimen name="pay_with_qr_ode_payment_data_transaction_value_symbol_text_size">16sp</dimen>
+
+    <!-- Top Snackbar -->
+    <dimen name="snackbar_margin_left">24dp</dimen>
+    <dimen name="snackbar_margin_right">24dp</dimen>
+    <dimen name="snackbar_margin_top">20dp</dimen>
+    <dimen name="snackbar_padding_horizontal">20dp</dimen>
+
+</resources>

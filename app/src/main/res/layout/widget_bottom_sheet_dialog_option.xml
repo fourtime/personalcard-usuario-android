@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <merge>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_client"
+            android:fontFamily="@font/font_regular"
+            android:onClickListener="@{clickListener}"
+            android:text="@{text}"
+            android:textAllCaps="false"
+            android:textColor="@color/button_client"
+            android:textSize="16sp"
+            tools:text="Opção" />
+
+    </merge>
+
+</layout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.home.HomeCardViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/home_card"
+            android:elevation="5dp">
+
+            <TextView
+                android:id="@+id/homeCardLastDigits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/font_regular"
+                android:gravity="start"
+                android:text="@{viewModel.lastDigits}"
+                android:textColor="@color/telenetColorOnCard"
+                android:textSize="12sp"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toStartOf="@+id/homeCardLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="**** 3990" />
+
+            <TextView
+                android:id="@+id/homeCardLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_regular"
+                android:gravity="end"
+                android:text="@{viewModel.label}"
+                android:textColor="@color/telenetColorOnCard"
+                android:textSize="12sp"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintBaseline_toBaselineOf="@+id/homeCardLastDigits"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/homeCardLastDigits"
+                tools:text="Alimentação" />
+
+            <View
+                android:id="@+id/homeCardTopDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/telenetColorDividerOnSurface"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeCardLabel" />
+
+            <TextView
+                android:id="@+id/homeCardBalance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_bold"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.balance}"
+                android:textColor="@color/telenetColorCardBalance"
+                android:textSize="@dimen/home_card_balance_text_size"
+                app:autoSizeMaxTextSize="24sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeCardTopDivider"
+                app:symbolTextSize="@{@dimen/home_card_balance_symbol_text_size}"
+                tools:text="R$ 280,00" />
+
+            <TextView
+                android:id="@+id/homeCardBalanceLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center"
+                android:text="@string/home_card_balance"
+                android:textColor="@color/telenetColorCardLabel"
+                android:textSize="12sp"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/homeCardBalance"
+                app:layout_constraintStart_toStartOf="@+id/homeCardBalance"
+                app:layout_constraintTop_toBottomOf="@+id/homeCardBalance" />
+
+            <View
+                android:id="@+id/homeCardBottomDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/telenetColorDividerOnSurface"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeCardBalanceLabel" />
+
+            <TextView
+                android:id="@+id/homeCardNextRecharge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.nextRecharge}"
+                android:textColor="@color/telenetColorOnCard"
+                android:textSize="12sp"
+                app:gone="@{!safeUnbox(viewModel.hasNextRecharge)}"
+                app:autoSizeMaxTextSize="12sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeCardBottomDivider"
+                app:pattern='@{"dd/MM"}'
+                tools:text="01/10" />
+
+            <TextView
+                android:id="@+id/homeCardNextRechargeLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center_horizontal"
+                android:text="@{viewModel.cardRechargeType}"
+                android:textColor="@color/telenetColorCardLabel"
+                android:textSize="10sp"
+                app:gone="@{!safeUnbox(viewModel.hasNextRecharge)}"
+                app:autoSizeMaxTextSize="10sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/homeCardNextRecharge"
+                app:layout_constraintStart_toStartOf="@+id/homeCardNextRecharge"
+                app:layout_constraintTop_toBottomOf="@+id/homeCardNextRecharge"
+                tools:ignore="SmallSp"
+                tools:text="@string/home_card_next_recharge" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

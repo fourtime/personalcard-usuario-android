@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_nav_edit_profile"
+            android:checkable="false"
+            android:icon="@drawable/home_nav_edit_profile"
+            android:title="@string/home_nav_edit_profile" />
+        <item
+            android:id="@+id/home_nav_change_password"
+            android:checkable="false"
+            android:icon="@drawable/home_nav_change_password"
+            android:title="@string/home_nav_change_password" />
+        <item
+            android:id="@+id/home_nav_support"
+            android:checkable="false"
+            android:icon="@drawable/home_nav_support"
+            android:title="@string/home_nav_support" />
+        <item
+            android:id="@+id/home_nav_terms_of_use"
+            android:checkable="false"
+            android:icon="@drawable/home_nav_terms_of_use"
+            android:title="@string/home_nav_terms_of_use" />
+        <item
+            android:id="@+id/home_nav_privacy_policy"
+            android:checkable="false"
+            android:icon="@drawable/home_nav_privacy_policy"
+            android:title="@string/home_nav_privacy_policy" />
+        <item
+            android:id="@+id/home_nav_rate_app"
+            android:checkable="false"
+            android:icon="@drawable/home_nav_rate_app"
+            android:title="@string/home_nav_rate_app" />
+        <item
+            android:id="@+id/home_nav_exit"
+            android:checkable="false"
+            android:icon="@drawable/home_nav_exit"
+            android:title="@string/home_nav_exit" />
+    </group>
+</menu>

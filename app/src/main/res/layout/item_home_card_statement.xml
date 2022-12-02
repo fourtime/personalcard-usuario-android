@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="transaction"
+            type="br.com.tln.personalcard.usuario.model.Transaction" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/itemHomeCardStatementLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/font_regular"
+            android:text="@{transaction.label}"
+            android:textColor="@color/telenetColorOnStatement"
+            android:textSize="14sp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/itemHomeCardStatementValue"
+            app:layout_constraintStart_toStartOf="@+id/itemHomeCardStatementStartGuideline"
+            app:layout_constraintTop_toTopOf="@+id/itemHomeCardStatementTopGuideline"
+            tools:text="Verdemar" />
+
+        <TextView
+            android:id="@+id/itemHomeCardStatementValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/font_regular"
+            android:gravity="end"
+            android:text="@{transaction.value}"
+            android:textColor="@color/telenetColorOnStatement"
+            android:textSize="13sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/itemHomeCardStatementLabel"
+            app:layout_constraintEnd_toEndOf="@+id/itemHomeCardStatementEndGuideline"
+            app:layout_constraintStart_toEndOf="@+id/itemHomeCardStatementLabel"
+            tools:text="-R$ 10,50" />
+
+        <TextView
+            android:id="@+id/itemHomeCardStatementTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/font_regular"
+            android:text="@{transaction.time}"
+            android:textColor="@color/telenetColorStatementTime"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/itemHomeCardStatementBottomGuideline"
+            app:layout_constraintStart_toStartOf="@+id/itemHomeCardStatementStartGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/itemHomeCardStatementLabel"
+            app:pattern="@{`dd' 'MMM`}"
+            tools:text="28 set" />
+
+        <TextView
+            android:id="@+id/itemHomeCardStatementInstallment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/font_regular"
+            android:gravity="end"
+            android:text="@{@string/home_card_statement_extract_installments(transaction.instalments)}"
+            android:textColor="@color/telenetColorStatementTime"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/itemHomeCardStatementTime"
+            app:layout_constraintEnd_toEndOf="@+id/itemHomeCardStatementEndGuideline"
+            app:layout_constraintStart_toEndOf="@+id/itemHomeCardStatementTime"
+            tools:text="1x" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/telenetColorDividerOnSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/itemHomeCardStatementTopGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="8dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/itemHomeCardStatementStartGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="0dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/itemHomeCardStatementBottomGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="8dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/itemHomeCardStatementEndGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.initialization.cpf.InitializationCpfViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/telenetColorSurface"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/telenetColorSurface">
+
+            <ImageView
+                android:id="@+id/initializationCpfIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="128dp"
+                android:src="@drawable/initialization_cpf_cpf"
+                app:layout_constraintEnd_toEndOf="@+id/initializationCpfEndGuideline"
+                app:layout_constraintStart_toStartOf="@+id/initializationCpfStartGuideline"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/initializationCpfTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center_horizontal"
+                android:text="@string/initialization_cpf_title"
+                android:textColor="@color/telenetColorOnSurface"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="@+id/initializationCpfEndGuideline"
+                app:layout_constraintStart_toStartOf="@+id/initializationCpfStartGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/initializationCpfIcon" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/initializationCpfCpf"
+                style="@style/AppTheme.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="72dp"
+                android:hint="@string/initialization_cpf_cpf_hint"
+                app:layout_constraintEnd_toEndOf="@+id/initializationCpfEndGuideline"
+                app:layout_constraintStart_toStartOf="@+id/initializationCpfStartGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/initializationCpfTitle">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789.-/"
+                    android:inputType="number"
+                    android:text="@={viewModel.cpf}"
+                    app:mask="@{@string/mask_cpf}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button_client"
+                android:fontFamily="@font/font_regular"
+                android:onClick="@{() -> viewModel.continueClicked()}"
+                android:text="@string/initialization_cpf_continue"
+                android:textAllCaps="false"
+                android:textColor="@color/button_client"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/initializationCpfEndGuideline"
+                app:layout_constraintStart_toStartOf="@+id/initializationCpfStartGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/initializationCpfCpf"
+                app:layout_constraintVertical_bias="0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/initializationCpfStartGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="24dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/initializationCpfEndGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="24dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

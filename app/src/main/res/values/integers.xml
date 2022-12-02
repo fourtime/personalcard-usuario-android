@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Widgets -->
+    <integer name="client_button_gradient_angle">0</integer>
+
+    <!-- Initialization CPF -->
+    <integer name="cpf_length">11</integer>
+
+    <!-- Initialization last digits -->
+    <integer name="last_digits_length">4</integer>
+
+    <!-- Edit Profile -->
+    <integer name="phone_length">10</integer>
+    <integer name="mobile_phone_length">11</integer>
+
+    <!-- Pay with QR code card password -->
+    <integer name="card_password_length">4</integer>
+
+    <!-- Register password -->
+    <integer name="register_password_min_length">6</integer>
+    <integer name="register_password_max_length">8</integer>
+
+    <!-- Change password -->
+    <integer name="change_password_min_length">6</integer>
+    <integer name="change_password_max_length">8</integer>
+
+</resources>

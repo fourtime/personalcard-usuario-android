@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.editprofile.EditProfileViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/telenetColorSurface"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/telenetColorSurface"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/edit_profile_content_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/editProfilePicture" />
+
+                <ImageView
+                    android:id="@+id/editProfilePicture"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginTop="24dp"
+                    android:onClick="@{() -> viewModel.changePictureClicked()}"
+                    android:src="@{viewModel.picture}"
+                    app:circleCrop="@{true}"
+                    app:invisible="@{!safeUnbox(viewModel.hasPicture)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/edit_profile_picture" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/home_nav_header_default_picture_bg"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center"
+                    android:onClick="@{() -> viewModel.changePictureClicked()}"
+                    android:text="@{viewModel.nameInitials}"
+                    android:textColor="@color/telenetColorSecondaryVariant"
+                    android:textSize="30sp"
+                    app:gone="@{safeUnbox(viewModel.hasPicture)}"
+                    app:layout_constraintBottom_toBottomOf="@+id/editProfilePicture"
+                    app:layout_constraintEnd_toEndOf="@+id/editProfilePicture"
+                    app:layout_constraintStart_toStartOf="@+id/editProfilePicture"
+                    app:layout_constraintTop_toTopOf="@+id/editProfilePicture"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="JP"
+                    tools:visibility="gone" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/ic_pencil"
+                    android:translationX="1dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/editProfilePicture"
+                    app:layout_constraintEnd_toEndOf="@+id/editProfilePicture" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editProfileCurrentPassword"
+                    style="@style/AppTheme.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:hint="@string/edit_profile_name_hint"
+                    app:layout_constraintEnd_toEndOf="@+id/editProfileEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/editProfileStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfilePicture">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:inputType="textPersonName"
+                        android:text="@{viewModel.name}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editProfileNewPassword"
+                    style="@style/AppTheme.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/edit_profile_phone_hint"
+                    app:layout_constraintEnd_toEndOf="@+id/editProfileEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/editProfileStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfileCurrentPassword">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789()- "
+                        android:inputType="phone"
+                        android:text="@={viewModel.phone}"
+                        app:mask='@{viewModel.phoneMasks}' />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editProfileNewPasswordConfirmation"
+                    style="@style/AppTheme.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="@string/edit_profile_email_hint"
+                    app:layout_constraintEnd_toEndOf="@+id/editProfileEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/editProfileStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfileNewPassword">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:text="@={viewModel.email}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/editProfileBirthDate"
+                    style="@style/AppTheme.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:hint="@string/edit_profile_birth_date_hint"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/editProfileEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/editProfileStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfileNewPasswordConfirmation"
+                    app:layout_constraintVertical_bias="0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789/"
+                        android:inputType="number"
+                        android:text="@={viewModel.birthDate}"
+                        app:mask="@{@string/edit_profile_mask_birth_date}"
+                        app:maskBind="@{true}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/editProfileStartGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="24dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/editProfileEndGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="24dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,21 @@
+buildscript {
+    apply from: 'versions.gradle'
+    addRepos(repositories)
+
+    dependencies {
+        classpath deps.plugin.android
+        classpath deps.plugin.kotlin
+        classpath deps.androidx.navigation.safe_args
+        classpath deps.plugin.google_services
+        classpath deps.plugin.crashlytics_gradle_plugin
+        classpath deps.plugin.firebase
+    }
+}
+
+allprojects {
+    addRepos(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

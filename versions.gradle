@@ -1,0 +1,202 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ **/
+def versions = [:]
+versions.android_gradle_plugin = '7.2.2'
+
+versions.google_services_plugin = '4.3.13'
+versions.google_services_basement = "18.1.0"
+versions.crashlytics = "18.2.12"
+versions.crashlytics_gradle_plugin = '2.5.2'
+versions.firebase_plugins = "1.1.5"
+versions.firebase_core = "18.0.0"
+versions.firebase_cloud_messaging = "23.0.7"
+versions.firebase_performance_monitor = "20.1.0"
+versions.firebase_analytics = "21.1.0"
+versions.gms_location = "20.0.0"
+versions.gms_maps = "18.1.0"
+
+versions.kotlin = "1.7.0"
+versions.kotlin_coroutines = "1.6.4"
+versions.threetenabp = "1.1.2"
+versions.timber = "5.0.1"
+versions.permissiondispatcher = "4.5.0"
+versions.glide = "4.13.2"
+versions.dagger = "2.21"
+versions.moshi = "1.13.0"
+versions.ok_http = "3.12.1"
+versions.retrofit = "2.6.0"
+versions.arrow = "0.8.2"
+versions.inputmask = "4.0.0"
+versions.uicomponents_page_indicator = "1.0.3@aar"
+versions.uicomponents_ucrop = "2.2.3"
+versions.uicomponents_zxing = "1.9.13"
+versions.debugDb = "1.0.5"
+versions.material_dialog_core = "3.1.1"
+versions.topsnackbar = "1.1.1"
+versions.material_components = "1.6.1"
+
+versions.androidx_core = "1.8.0"
+versions.androidx_paging = "3.1.1"
+versions.androidx_constraint_layout = "2.1.4"
+versions.androidx_browser = "1.4.0"
+versions.androidx_appcompat = "1.5.0"
+versions.androidx_recyclerview = "1.2.1"
+versions.androidx_swiperefreshlayout = "1.1.0"
+versions.androidx_room = "2.4.3"
+versions.androidx_lifecycle = "2.5.1"
+versions.androidx_lifecycle_extensions = "2.2.0"
+versions.androidx_navigation = '2.5.1'
+
+
+ext.build_versions = [:]
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 31
+build_versions.compile_sdk = 32
+build_versions.build_tools = "30.0.2"
+ext.build_versions = build_versions
+
+ext.deps = [:]
+def deps = [:]
+
+def plugin = [:]
+plugin.android = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+plugin.kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+plugin.google_services = "com.google.gms:google-services:$versions.google_services_plugin"
+plugin.crashlytics_gradle_plugin = "com.google.firebase:firebase-crashlytics-gradle:$versions.crashlytics_gradle_plugin"
+plugin.firebase = "com.google.firebase:firebase-plugins:$versions.firebase_plugins"
+deps.plugin = plugin
+
+def gms = [:]
+gms.location = "com.google.android.gms:play-services-location:$versions.gms_location"
+gms.maps = "com.google.android.gms:play-services-maps:$versions.gms_maps"
+deps.gms = gms
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlin_coroutines"
+kotlin.coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlin_coroutines"
+deps.kotlin = kotlin
+
+deps.play_services_basement = "com.google.android.gms:play-services-basement:$versions.google_services_basement"
+deps.crashlytics = "com.google.firebase:firebase-crashlytics-ktx:$versions.crashlytics"
+deps.threetenabp = "com.jakewharton.threetenabp:threetenabp:$versions.threetenabp"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
+deps.inputmask = "com.redmadrobot:inputmask:${versions.inputmask}"
+
+def firebase = [:]
+firebase.core = "com.google.firebase:firebase-core:$versions.firebase_core"
+firebase.analytics = "com.google.firebase:firebase-analytics-ktx:$versions.firebase_analytics"
+firebase.cloud_messaging = "com.google.firebase:firebase-messaging-ktx:$versions.firebase_cloud_messaging"
+firebase.performance_monitor = "com.google.firebase:firebase-perf-ktx:$versions.firebase_performance_monitor"
+deps.firebase = firebase
+
+def androidx = [:]
+androidx.core = "androidx.core:core-ktx:$versions.androidx_core"
+androidx.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.androidx_constraint_layout"
+androidx.app_compat = "androidx.appcompat:appcompat:$versions.androidx_appcompat"
+androidx.recyclerview = "androidx.recyclerview:recyclerview:$versions.androidx_recyclerview"
+androidx.browser = "androidx.browser:browser:$versions.androidx_browser"
+androidx.swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.androidx_swiperefreshlayout"
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.androidx_room"
+room.migration = "androidx.room:room-migration:$versions.androidx_room"
+room.compiler = "androidx.room:room-compiler:$versions.androidx_room"
+room.rxjava2 = "androidx.room:room-rxjava2:$versions.androidx_room"
+androidx.room = room
+
+def paging = [:]
+paging.runtime = "androidx.paging:paging-runtime-ktx:$versions.androidx_paging"
+paging.rxjava2 = "androidx.paging:paging-rxjava2-ktx:$versions.androidx_paging"
+androidx.paging = paging
+
+def navigation = [:]
+navigation.fragment = "androidx.navigation:navigation-fragment-ktx:$versions.androidx_navigation"
+navigation.ui = "androidx.navigation:navigation-ui-ktx:$versions.androidx_navigation"
+navigation.safe_args = "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.androidx_navigation"
+androidx.navigation = navigation
+
+def lifecycle = [:]
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime-ktx:$versions.androidx_lifecycle"
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.androidx_lifecycle_extensions"
+lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.androidx_lifecycle"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.androidx_lifecycle"
+lifecycle.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidx_lifecycle"
+androidx.lifecycle = lifecycle
+
+deps.androidx = androidx
+
+def material_components = [:]
+material_components.core = "com.google.android.material:material:$versions.material_components"
+deps.material_components = material_components
+
+def permissiondispatcher = [:]
+permissiondispatcher.core = "org.permissionsdispatcher:permissionsdispatcher:$versions.permissiondispatcher"
+permissiondispatcher.processor =  "org.permissionsdispatcher:permissionsdispatcher-processor:$versions.permissiondispatcher"
+deps.permissiondispatcher = permissiondispatcher
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+def moshi = [:]
+moshi.runtime = "com.squareup.moshi:moshi:$versions.moshi"
+moshi.codegen = "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+deps.moshi = moshi
+
+def ok_http = [:]
+ok_http.runtime = "com.squareup.okhttp3:okhttp:$versions.ok_http"
+ok_http.logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$versions.ok_http"
+deps.ok_http = ok_http
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+deps.retrofit = retrofit
+
+def arrow = [:]
+arrow.core = "io.arrow-kt:arrow-core:$versions.arrow"
+deps.arrow = arrow
+
+def uicomponents = [:]
+uicomponents.page_indicator = "com.romandanylyk:pageindicatorview:$versions.uicomponents_page_indicator"
+uicomponents.ucrop = "com.github.yalantis:ucrop:$versions.uicomponents_ucrop"
+uicomponents.zxing = "me.dm7.barcodescanner:zxing:$versions.uicomponents_zxing"
+deps.uicomponents = uicomponents
+
+deps.topsnackbar = "com.androidadvance:topsnackbar:$versions.topsnackbar"
+
+def dev = [:]
+dev.debugDb = "com.amitshekhar.android:debug-db:$versions.debugDb"
+deps.dev = dev
+
+def material_dialog = [:]
+material_dialog.material_dialog_core = "com.afollestad.material-dialogs:core:$versions.material_dialog_core"
+deps.material_dialog = material_dialog
+
+ext.deps = deps
+
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.maven {
+        url 'https://jitpack.io'
+    }
+    handler.maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+}
+
+ext.addRepos = this.&addRepos

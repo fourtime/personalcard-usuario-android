@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main.xml"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.changepassword.ChangePasswordFragment"
+        android:label="@string/toolbar_title_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/preLoginFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.prelogin.PreLoginFragment"
+        tools:layout="@layout/fragment_pre_login">
+        <action
+            android:id="@+id/action_preLoginFragment_to_initializationCpfFragment"
+            app:destination="@id/initializationCpfFragment"
+            app:popUpTo="@+id/preLoginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_preLoginFragment"
+        app:destination="@id/preLoginFragment"
+        app:popUpTo="@+id/nav_main.xml" />
+    <fragment
+        android:id="@+id/initializationCpfFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.initialization.cpf.InitializationCpfFragment"
+        tools:layout="@layout/fragment_initialization_cpf">
+        <action
+            android:id="@+id/action_initializationCpfFragment_to_initializationCardLastDigitsFragment"
+            app:destination="@id/initializationCardLastDigitsFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_initializationCpfFragment"
+        app:destination="@id/initializationCpfFragment"
+        app:popUpTo="@+id/nav_main.xml"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/initializationCardLastDigitsFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.initialization.cardlastdigits.InitializationCardLastDigitsFragment"
+        tools:layout="@layout/fragment_initialization_card_last_digits">
+        <action
+            android:id="@+id/action_initializationCardLastDigitsFragment_to_initializationCreatePasswordFragment"
+            app:destination="@id/initializationCreatePasswordFragment"
+            app:popUpTo="@+id/initializationCpfFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_initializationCardLastDigitsFragment_to_initializationPasswordFragment"
+            app:destination="@id/initializationPasswordFragment"
+            app:popUpTo="@+id/initializationCpfFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="cpf"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/initializationPasswordFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.initialization.password.InitializationPasswordFragment"
+        tools:layout="@layout/fragment_initialization_password">
+        <action
+            android:id="@+id/action_initializationPasswordFragment_to_initializationWelcomeFragment"
+            app:destination="@id/initializationWelcomeFragment"
+            app:popUpTo="@+id/initializationPasswordFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="cpf"
+            app:argType="string" />
+        <argument
+            android:name="registerEmail"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_initializationPasswordFragment_to_initializationForgotPasswordFragment"
+            app:destination="@id/initializationForgotPasswordFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_initializationPasswordFragment"
+        app:destination="@id/initializationPasswordFragment"
+        app:popUpTo="@+id/nav_main.xml"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/initializationForgotPasswordFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.initialization.forgotpassword.InitializationForgotPasswordFragment"
+        android:label="InitializationForgotPasswordFragment"
+        tools:layout="@layout/fragment_initialization_forgot_password">
+        <action
+            android:id="@+id/action_initializationForgotPasswordFragment_to_recoveryPasswordSuccessFragment"
+            app:destination="@id/recoveryPasswordSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/initializationCreatePasswordFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.initialization.createpassword.InitializationCreatePasswordFragment"
+        tools:layout="@layout/fragment_initialization_create_password">
+        <action
+            android:id="@+id/action_initializationCreatePasswordFragment_to_initializationEmailFragment"
+            app:destination="@id/initializationEmailFragment"
+            app:popUpTo="@+id/initializationCreatePasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_initializationCreatePasswordFragment"
+        app:destination="@id/initializationCreatePasswordFragment"
+        app:popUpTo="@+id/nav_main.xml"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/initializationEmailFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.initialization.email.InitializationEmailFragment"
+        tools:layout="@layout/fragment_initialization_email">
+        <action
+            android:id="@+id/action_initializationEmailFragment_to_initializationWelcomeFragment"
+            app:destination="@id/initializationWelcomeFragment"
+            app:popUpTo="@+id/initializationEmailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/initializationWelcomeFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.initialization.welcome.InitializationWelcomeFragment"
+        android:label="InitializationWelcomeFragment"
+        tools:layout="@layout/fragment_initialization_welcome">
+        <argument
+            android:name="firstAccess"
+            app:argType="boolean" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_initializationWelcomeFragment"
+        app:destination="@id/initializationWelcomeFragment"
+        app:popUpTo="@+id/nav_main.xml"
+        app:popUpToInclusive="true">
+        <argument
+            android:name="firstAccess"
+            android:defaultValue="false" />
+    </action>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_payWithQrCodeReaderFragment"
+            app:destination="@id/payWithQrCodeReaderFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_accreditedNetworkMapFragment"
+            app:destination="@id/accreditedNetworkMapFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@+id/nav_main.xml" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.editprofile.EditProfileFragment"
+        android:label="@string/toolbar_title_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/payWithQrCodeReaderFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.paywithqrcode.PayWithQrCodeReaderFragment"
+        android:label="@string/toolbar_title_pay_with_qr_code"
+        tools:layout="@layout/fragment_pay_with_qr_code_reader">
+        <action
+            android:id="@+id/action_payWithQrCodeReaderFragment_to_payWithQrCodePaymentDataFragment"
+            app:destination="@id/payWithQrCodePaymentDataFragment" />
+        <argument
+            android:name="card"
+            app:argType="br.com.tln.personalcard.usuario.entity.Card" />
+    </fragment>
+    <fragment
+        android:id="@+id/payWithQrCodePaymentDataFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.paywithqrcode.PayWithQrCodePaymentDataFragment"
+        android:label="@string/toolbar_title_pay_with_qr_code"
+        tools:layout="@layout/fragment_pay_with_qr_code_payment_data">
+        <action
+            android:id="@+id/action_payWithQrCodePaymentDataFragment_to_payWithQrCodeCardPasswordFragment"
+            app:destination="@id/payWithQrCodeCardPasswordFragment" />
+        <argument
+            android:name="card"
+            app:argType="br.com.tln.personalcard.usuario.entity.Card" />
+        <argument
+            android:name="paymentData"
+            app:argType="br.com.tln.personalcard.usuario.model.PaymentData" />
+    </fragment>
+    <fragment
+        android:id="@+id/payWithQrCodeCardPasswordFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.paywithqrcode.PayWithQrCodeCardPasswordFragment"
+        android:label="@string/toolbar_title_pay_with_qr_code"
+        tools:layout="@layout/fragment_pay_with_qr_code_card_password">
+        <action
+            android:id="@+id/action_payWithQrCodeCardPasswordFragment_to_payWithQrCodeSuccessFragment"
+            app:destination="@id/payWithQrCodeSuccessFragment"
+            app:popUpTo="@+id/homeFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="card"
+            app:argType="br.com.tln.personalcard.usuario.entity.Card" />
+        <argument
+            android:name="paymentData"
+            app:argType="br.com.tln.personalcard.usuario.model.PaymentData" />
+    </fragment>
+    <fragment
+        android:id="@+id/payWithQrCodeSuccessFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.paywithqrcode.PayWithQrCodeSuccessFragment"
+        android:label="@string/toolbar_title_pay_with_qr_code"
+        tools:layout="@layout/fragment_pay_with_qr_code_success">
+        <argument
+            android:name="card"
+            app:argType="br.com.tln.personalcard.usuario.entity.Card" />
+        <argument
+            android:name="paymentData"
+            app:argType="br.com.tln.personalcard.usuario.model.PaymentData" />
+        <argument
+            android:name="confirmPayment"
+            app:argType="br.com.tln.personalcard.usuario.model.ConfirmPayment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accreditedNetworkMapFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.accreditednetwork.AccreditedNetworkMapFragment"
+        android:label="{label}"
+        tools:layout="@layout/fragment_accredited_network_map">
+        <argument
+            android:name="label"
+            app:argType="string" />
+        <argument
+            android:name="card"
+            app:argType="br.com.tln.personalcard.usuario.entity.Card" />
+        <argument
+                android:name="accreditedNetwork"
+                app:argType="br.com.tln.personalcard.usuario.model.AccreditedNetwork"
+                app:nullable="true" />
+        <action
+                android:id="@+id/action_accreditedNetworkMapFragment_to_accreditedNetworkFilterFragment"
+                app:destination="@id/accreditedNetworkFilterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accreditedNetworkFilterFragment"
+        android:name="br.com.tln.personalcard.usuario.ui.accreditednetwork.AccreditedNetworkFilterFragment"
+        android:label="@string/toolbar_title_accredited_network_filter"
+        tools:layout="@layout/fragment_accredited_network_filter">
+
+        <argument
+                android:name="card"
+                app:argType="br.com.tln.personalcard.usuario.entity.Card" />
+
+        <action
+                android:id="@+id/action_accreditedNetworkFilterFragment_to_accreditedNetworkFilterResultsFragment"
+                app:destination="@id/accreditedNetworkFilterResultsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/accreditedNetworkFilterResultsFragment"
+            android:name="br.com.tln.personalcard.usuario.ui.accreditednetwork.AccreditedNetworkFilterResultsFragment"
+            android:label="@string/toolbar_title_accredited_network_filter_results"
+            tools:layout="@layout/fragment_accredited_network_filter_results">
+        <argument
+                android:name="card"
+                app:argType="br.com.tln.personalcard.usuario.entity.Card" />
+        <argument
+                android:name="accreditedNetworkFilter"
+                app:argType="br.com.tln.personalcard.usuario.model.AccreditedNetworkFilter" />
+        <action
+                android:id="@+id/action_accreditedNetworkFilterResultsFragment_to_accreditedNetworkMapFragment"
+                app:destination="@id/accreditedNetworkMapFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/recoveryPasswordSuccessFragment"
+            android:name="br.com.tln.personalcard.usuario.ui.initialization.forgotpassword.RecoveryPasswordSuccessFragment"
+            tools:layout="@layout/fragment_recovery_password_success">
+        <argument
+                android:name="cpf"
+                app:argType="string" />
+        <argument
+                android:name="firstAccess"
+                app:argType="boolean" />
+        <action
+                android:id="@+id/action_recoveryPasswordSuccessFragment_to_initializationPasswordFragment"
+                app:destination="@id/initializationPasswordFragment" />
+    </fragment>
+</navigation>

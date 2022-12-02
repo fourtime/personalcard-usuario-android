@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.tln.personalcard.usuario.ui.initialization.cardlastdigits.InitializationCardLastDigitsViewModel" />
+
+        <variable
+            name="continueClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="animationHideError"
+            type="Runnable" />
+
+        <variable
+            name="animationShowError"
+            type="Runnable" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/telenetColorSurface"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/initializationCardLastDigitsError"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/error_floating_label"
+            android:drawableStart="@drawable/error_floating_label_alert"
+            android:drawableEnd="@drawable/error_floating_label_close"
+            android:drawablePadding="16dp"
+            android:fontFamily="@font/font_regular"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.errorClicked()}"
+            android:padding="16dp"
+            android:text="@{safeUnbox(viewModel.errorMessage)}"
+            android:textColor="@color/telenetColorOnError"
+            android:textSize="14sp"
+            android:translationY="-100dp"
+            android:translationZ="999999dp"
+            app:animation="@{animationShowError}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:reverseAnimation="@{animationHideError}"
+            tools:text="Cartão não encontrado, tente novamente."
+            tools:translationY="16dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/telenetColorSurface"
+            android:fillViewport="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/telenetColorSurface">
+
+                <ImageView
+                    android:id="@+id/initializationCardLastDigitsIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="128dp"
+                    android:src="@drawable/initialization_card_last_digits_icon"
+                    app:layout_constraintEnd_toEndOf="@+id/initializationCardLastDigitsEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/initializationCardLastDigitsStartGuideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/initializationCardLastDigitsTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/font_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/initialization_card_last_digits_title"
+                    android:textColor="@color/telenetColorOnSurface"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="@+id/initializationCardLastDigitsEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/initializationCardLastDigitsStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/initializationCardLastDigitsIcon" />
+
+                <EditText
+                    android:id="@+id/initializationCardLastDigitsDigits"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="@integer/last_digits_length"
+                    android:text="@={viewModel.lastDigits}"
+                    android:translationX="-9999dp"
+                    android:translationY="-9999dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/initializationCardLastDigitsOverlay"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/initializationCardLastDigitsDigit1"
+                    app:layout_constraintEnd_toEndOf="@+id/initializationCardLastDigitsEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/initializationCardLastDigitsStartGuideline"
+                    app:layout_constraintTop_toTopOf="@+id/initializationCardLastDigitsDigit1" />
+
+                <TextView
+                    android:id="@+id/initializationCardLastDigitsDigit1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edit_text_client"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textSize="32sp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@+id/initializationCardLastDigitsDigit2"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@+id/initializationCardLastDigitsStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/initializationCardLastDigitsTitle" />
+
+                <TextView
+                    android:id="@+id/initializationCardLastDigitsDigit2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/edit_text_client"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textSize="32sp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@+id/initializationCardLastDigitsDigit3"
+                    app:layout_constraintStart_toEndOf="@+id/initializationCardLastDigitsDigit1"
+                    app:layout_constraintTop_toTopOf="@+id/initializationCardLastDigitsDigit1" />
+
+                <TextView
+                    android:id="@+id/initializationCardLastDigitsDigit3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/edit_text_client"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textSize="32sp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@+id/initializationCardLastDigitsDigit4"
+                    app:layout_constraintStart_toEndOf="@+id/initializationCardLastDigitsDigit2"
+                    app:layout_constraintTop_toTopOf="@+id/initializationCardLastDigitsDigit1" />
+
+                <TextView
+                    android:id="@+id/initializationCardLastDigitsDigit4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/edit_text_client"
+                    android:fontFamily="@font/font_bold"
+                    android:gravity="center"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textSize="32sp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@+id/initializationCardLastDigitsEndGuideline"
+                    app:layout_constraintStart_toEndOf="@+id/initializationCardLastDigitsDigit3"
+                    app:layout_constraintTop_toTopOf="@+id/initializationCardLastDigitsDigit1" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/button_client"
+                    android:enabled="@{safeUnbox(viewModel.validLastDigits)}"
+                    android:fontFamily="@font/font_regular"
+                    android:onClickListener="@{continueClickListener}"
+                    android:text="@string/initialization_card_last_digits_continue"
+                    android:textAllCaps="false"
+                    android:textColor="@color/button_client"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/initializationCardLastDigitsEndGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/initializationCardLastDigitsStartGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/initializationCardLastDigitsDigit1"
+                    app:layout_constraintVertical_bias="0" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/initializationCardLastDigitsStartGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="24dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/initializationCardLastDigitsEndGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="24dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

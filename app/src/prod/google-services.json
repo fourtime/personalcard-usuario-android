@@ -1,0 +1,164 @@
+{
+  "project_info": {
+    "project_number": "243188414082",
+    "firebase_url": "https://telenet-usuario-9b5a7.firebaseio.com",
+    "project_id": "telenet-usuario-9b5a7",
+    "storage_bucket": "telenet-usuario-9b5a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243188414082:android:a3b1fcc653edbaf6b5669b",
+        "android_client_info": {
+          "package_name": "br.com.tln.eightcard.usuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe2SK21hg54stnHwiqsVPeeQaemDX-7z8"
+        },
+        {
+          "current_key": "AIzaSyAa6Fr9jld8tuA1pSTQGQ5LxCkFBOeTVfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "243188414082-ti6g3e6o0oo2stfn244kn2158n4s2osp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.personalcard.PersonalCardUsuario"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243188414082:android:cd690e6e70209c6db5669b",
+        "android_client_info": {
+          "package_name": "br.com.tln.personalcard.usuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe2SK21hg54stnHwiqsVPeeQaemDX-7z8"
+        },
+        {
+          "current_key": "AIzaSyAa6Fr9jld8tuA1pSTQGQ5LxCkFBOeTVfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "243188414082-ti6g3e6o0oo2stfn244kn2158n4s2osp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.personalcard.PersonalCardUsuario"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243188414082:android:27e925f579abf309b5669b",
+        "android_client_info": {
+          "package_name": "br.com.tln.personalcard.usuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw8JDxbljyYB9nDrkfRSIKYxJad4p5qyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "243188414082-ti6g3e6o0oo2stfn244kn2158n4s2osp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.personalcard.PersonalCardUsuario"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243188414082:android:db4f219bb7c9e6ae",
+        "android_client_info": {
+          "package_name": "br.com.tln.usuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe2SK21hg54stnHwiqsVPeeQaemDX-7z8"
+        },
+        {
+          "current_key": "AIzaSyAa6Fr9jld8tuA1pSTQGQ5LxCkFBOeTVfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243188414082-fsbme6ejmt6v5n4fu0gf4p5sf10mkefr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "243188414082-ti6g3e6o0oo2stfn244kn2158n4s2osp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.personalcard.PersonalCardUsuario"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

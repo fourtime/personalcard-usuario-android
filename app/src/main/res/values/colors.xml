@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="telenetColorPrimary">#35a61e</color>
+    <color name="telenetColorPrimaryVariant">#287f14</color>
+    <color name="telenetColorSecondary">#f4f8ef</color>
+    <color name="telenetColorSecondaryVariant">#7bab39</color>
+    <color name="telenetColorSurface">#fafafa</color>
+    <color name="telenetColorBackground">#ffffff</color>
+    <color name="telenetColorError">#ef5350</color>
+
+    <color name="telenetColorOnPrimary">#ffffff</color>
+    <color name="telenetColorOnSecondary">#45484a</color>
+    <color name="telenetColorOnBackground">#45484a</color>
+    <color name="telenetLightColorOnBackground">#757575</color>
+    <color name="telenetColorOnSurface">#45484a</color>
+    <color name="telenetColorOnError">#ffffff</color>
+
+    <color name="telenetColorDividerOnSurface">#eeeeee</color>
+    <color name="telenetColorExtra1">#f4f8ef</color>
+    <color name="telenetColorExtra2">#7bab39</color>
+    <color name="telenetColorExtra3">#757575</color>
+    <color name="telenetColorExtra4">#212121</color>
+
+    <color name="telenetColorOnExtra1">#346632</color>
+    <color name="telenetColorOnExtra2">#ffffff</color>
+
+    <color name="telenetColorOnCard">#212121</color>
+    <color name="telenetColorCardBalance">#45484a</color>
+    <color name="telenetColorCardLabel">#5e6265</color>
+
+    <color name="telenetColorStatementTitle">#45484a</color>
+    <color name="telenetColorStatementSelectorSelected">#7bab39</color>
+    <color name="telenetColorStatementSelectorUnselected">#5e6265</color>
+    <color name="telenetColorOnStatement">#212121</color>
+    <color name="telenetColorStatementTime">#5e6265</color>
+
+    <color name="telenetColorAccreditedNetworkDetailsTitle">#45484a</color>
+    <color name="telenetColorAccreditedNetworkDetailsAddress">#757575</color>
+    <color name="telenetColorAccreditedNetworkDetailsDistance">#7bab39</color>
+
+    <color name="telenetColorPayWithQrCodeSuccessFrame">#FBFCF9</color>
+    <color name="telenetColorPayWithQrCodeSuccessFrameBorder">#E7F0DC</color>
+
+    <color name="telenetColorFilterTitles">#5e6265</color>
+    <color name="telenetColorFilterLists">#212121</color>
+    <color name="telenetColorFilterDivisor">#eeeeee</color>
+
+    <!-- Dialog -->
+    <color name="telenetDialogDimColor">#66000000</color>
+
+    <!-- Button -->
+    <color name="button_client_enabled_gradient_start">#399903</color>
+    <color name="button_client_enabled_gradient_end">#3aba20</color>
+    <color name="button_client_disabled_gradient_start">#9e9e9e</color>
+    <color name="button_client_disabled_gradient_end">#bdbdbd</color>
+
+    <color name="button_danger_gradient_start">#d54a47</color>
+    <color name="button_danger_gradient_end">#e96360</color>
+
+    <color name="button_neutral_background">@color/white</color>
+    <color name="button_neutral_border">#7bab39</color>
+    <color name="button_neutral_text">#7bab39</color>
+
+
+    <!-- Edit Text -->
+    <color name="edit_text_hint_color">#9e9e9e</color>
+    <color name="edit_text_outline_color">#eeeeee</color>
+    <color name="edit_text_focused_outline_color">#eeeeee</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/edit_text_outline_color</color>
+</resources>
