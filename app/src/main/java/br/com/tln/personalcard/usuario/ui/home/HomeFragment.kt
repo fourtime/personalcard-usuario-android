@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import br.com.tln.personalcard.usuario.BuildConfig
 import br.com.tln.personalcard.usuario.R
+import br.com.tln.personalcard.usuario.binding.ImageViewBindings.src
 import br.com.tln.personalcard.usuario.core.ErrorResource
 import br.com.tln.personalcard.usuario.core.HasToolbar
 import br.com.tln.personalcard.usuario.core.LoadingResource
@@ -32,6 +35,7 @@ import br.com.tln.personalcard.usuario.extensions.observe
 import br.com.tln.personalcard.usuario.model.AccreditedNetwork
 import br.com.tln.personalcard.usuario.model.Transaction
 import br.com.tln.personalcard.usuario.provider.ResourceProvider
+import java.io.File
 import javax.inject.Inject
 
 class HomeFragment : SessionRequiredBaseFragment<FragmentHomeBinding, HomeNavigator, HomeViewModel>(
@@ -60,6 +64,16 @@ class HomeFragment : SessionRequiredBaseFragment<FragmentHomeBinding, HomeNaviga
                 HomeNavViewHeaderBinding.bind(requireBinding().navView.getHeaderView(0))
             navHeaderBinding.lifecycleOwner = viewLifecycleOwner
             navHeaderBinding.viewModel = viewModel
+        }
+
+        viewModel.profileSourceLiveData.observe(this) {
+            it?.let {
+                navHeaderBinding.terminalNumber.text = it.email
+                val avatarFile = File(it.picture)
+                if (avatarFile.exists()) {
+                    navHeaderBinding.homeNavHeaderUserPicture.setImageURI(Uri.fromFile(avatarFile))
+                }
+            }
         }
 
         requireBinding().navView.setNavigationItemSelectedListener { menuItem ->

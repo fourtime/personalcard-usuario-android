@@ -141,6 +141,7 @@ class EditProfileViewModel @Inject constructor(
         val phone = this.phone.value
         val email = this.email.value
         val birthDate = this.birthDate.value?.toLocalDateOrNull(pattern = birthDatePattern)
+        val avatarPath = this.picture.value
 
         if (phone.isNullOrEmpty()) {
             _errorMessageLiveData.postValue(Event(resourceProvider.getString(R.string.edit_profile_validation_invalid_phone)))
@@ -149,7 +150,6 @@ class EditProfileViewModel @Inject constructor(
             _errorMessageLiveData.postValue(Event(resourceProvider.getString(R.string.edit_profile_validation_invalid_email)))
             return null
         } else if (birthDate == null) {
-
             _errorMessageLiveData.postValue(Event(resourceProvider.getString(R.string.edit_profile_validation_invalid_birth_date)))
             return null
         }
@@ -170,24 +170,19 @@ class EditProfileViewModel @Inject constructor(
             )
 
             val result = withContext(Dispatchers.IO) {
-                userRepository.editProfile(
-                    accessToken = account.accessToken,
-                    request = request
-                )
+                userRepository.editProfile(accessToken = account.accessToken, request = request)
             }
 
             when (result) {
                 is Either.Left -> {
-                    onEditProfileDataFailure(result.a) { value ->
-                        liveData.value = value
-                    }
+                    onEditProfileDataFailure(result.a) { value -> liveData.value = value }
                 }
                 is Either.Right -> {
-                    onEditProfileDataSuccess(
-                        resource = result.b
-                    ) { value ->
-                        liveData.value = value
+                    val avatar = File(avatarPath)
+                    if (avatar.exists()) {
+                        userRepository.updateAvatar(accessToken = account.accessToken, avatar = avatar)
                     }
+                    onEditProfileDataSuccess(resource = result.b) { value -> liveData.value = value }
                 }
             }
 
@@ -213,9 +208,9 @@ class EditProfileViewModel @Inject constructor(
                 onEditProfileLoading(valueListener = valueListener)
             }
             is SuccessResource -> {
-                onEditProfileSuccess(
-                    valueListener = valueListener
-                )
+
+
+                onEditProfileSuccess(valueListener = valueListener)
             }
             is ErrorResource -> {
                 onEditProfileError(valueListener = valueListener)
@@ -251,15 +246,11 @@ class EditProfileViewModel @Inject constructor(
         viewModelScope.launch {
             liveData.value = LoadingResource()
 
-            val profile = withContext(Dispatchers.IO) {
-                sessionRepository.getProfile()
-            } ?: return@launch
+            val profile = withContext(Dispatchers.IO) { sessionRepository.getProfile() } ?: return@launch
 
             withContext(Dispatchers.IO) {
                 sessionRepository.update(
-                    profile.copy(
-                        picture = picture.absolutePath
-                    )
+                    profile.copy(picture = picture.absolutePath)
                 )
 
                 // TODO delete picture picture.delete()

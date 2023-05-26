@@ -29,6 +29,7 @@ import br.com.tln.personalcard.usuario.extensions.observeEvent
 import br.com.tln.personalcard.usuario.extensions.observeResource
 import br.com.tln.personalcard.usuario.widget.BottomSheetDialog
 import br.com.tln.personalcard.usuario.widget.ErrorToast
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.yalantis.ucrop.UCrop
 import com.yalantis.ucrop.UCropActivity

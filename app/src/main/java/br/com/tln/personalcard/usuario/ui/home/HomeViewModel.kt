@@ -1,6 +1,7 @@
 package br.com.tln.personalcard.usuario.ui.home
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
@@ -14,7 +15,9 @@ import br.com.tln.personalcard.usuario.core.Resource
 import br.com.tln.personalcard.usuario.core.SessionRequiredBaseViewModel
 import br.com.tln.personalcard.usuario.core.SuccessResource
 import br.com.tln.personalcard.usuario.entity.Card
+import br.com.tln.personalcard.usuario.entity.Profile
 import br.com.tln.personalcard.usuario.extensions.initials
+import br.com.tln.personalcard.usuario.extensions.observeEvent
 import br.com.tln.personalcard.usuario.model.CardStatement
 import br.com.tln.personalcard.usuario.model.Transaction
 import br.com.tln.personalcard.usuario.provider.ResourceProvider
@@ -42,7 +45,8 @@ class HomeViewModel @Inject constructor(
     private val initializationDataSourceLiveData by lazy {
         sessionRepository.getInitializationDataLiveData()
     }
-    private val profileSourceLiveData by lazy {
+
+    val profileSourceLiveData by lazy {
         sessionRepository.getProfileLiveData()
     }
 
@@ -71,7 +75,6 @@ class HomeViewModel @Inject constructor(
 
     /* Cards */
     private var currentCard: Card? = null
-
 
     /* Card Statement */
     private val _cardStatementLiveData = MutableLiveData<Resource<CardStatement, Nothing?>>()

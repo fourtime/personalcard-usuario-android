@@ -1,5 +1,6 @@
 package br.com.tln.personalcard.usuario.repository
 
+import android.os.Environment
 import arrow.core.Either
 import br.com.tln.personalcard.usuario.BuildConfig
 import br.com.tln.personalcard.usuario.core.ErrorResource
@@ -38,12 +39,22 @@ import br.com.tln.personalcard.usuario.webservice.response.ErrorBodyResponse
 import com.squareup.moshi.JsonEncodingException
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.CancellationException
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.threeten.bp.LocalDateTime
 import retrofit2.HttpException
 import java.io.EOFException
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
+import java.lang.Exception
+import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
+
 
 @Singleton
 class UserRepository @Inject constructor(
@@ -283,6 +294,31 @@ class UserRepository @Inject constructor(
                     birthDate = request.birthDate.toLocalDate()
                 )
             )
+        }
+
+        return Either.right(SuccessResource(data = null))
+    }
+
+    suspend fun updateAvatar(
+        accessToken: AccessToken,
+        avatar: File
+    ): Either<Throwable, Resource<Nothing?, String?>> {
+
+        val response = when (val result = updateAvatarRequest(
+            accessToken = accessToken.formattedToken,
+            avatar = avatar
+        )) {
+            is Either.Left -> {
+                return Either.left(result.a)
+            }
+            is Either.Right -> {
+                val resource: Resource<Nothing?, String?> = result.b
+                if (resource is SuccessResource) {
+                    resource.data
+                } else {
+                    return Either.right(resource)
+                }
+            }
         }
 
         return Either.right(SuccessResource(data = null))
@@ -563,22 +599,44 @@ class UserRepository @Inject constructor(
             return Either.left(t)
         }
 
-        val address = Address(
-            state = userProfileResponse.results.uf,
-            city = userProfileResponse.results.city,
-            neighborhood = userProfileResponse.results.neighborhood,
-            street = "",
-            number = userProfileResponse.results.numero,
-            complement = userProfileResponse.results.complement,
-            postalCode = userProfileResponse.results.cep
-        )
+        var picturePath: String = ""
+        try {
+            val avatarResponse = userService.getAvatar(authorization = accessToken).body()
+            avatarResponse?.let { body ->
+                val fileName = "fotoperfil.jpg"
+                val dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                val file: File = File(dir, fileName)
+                file.createNewFile()
+                var inputStream: InputStream? = null
+
+                try {
+                    inputStream = body.byteStream()
+                    val outputStream = FileOutputStream(file)
+                    outputStream.use { output ->
+                        val buffer = ByteArray(4 * 1024) // or other buffer size
+                        var read: Int
+                        while (inputStream.read(buffer).also { read = it } != -1) {
+                            output.write(buffer, 0, read)
+                        }
+                        outputStream.flush()
+                    }
+                    picturePath = file.absolutePath
+                } catch (ex: Exception) {
+                    val d = ex.message
+                } finally {
+                    inputStream?.close();
+                }
+            }
+        } catch (ex: Exception) {
+            val d = ex.message
+        } finally { }
 
         val profile = Profile(
             email = userProfileResponse.results.email,
             phone = userProfileResponse.results.phone,
-            picture = "",
+            picture = picturePath,
             birthDate = userProfileResponse.results.birthDate?.toLocalDateTime()?.toLocalDate(),
-            address = address,
+            address = Address(state = userProfileResponse.results.uf, city = userProfileResponse.results.city, neighborhood = userProfileResponse.results.neighborhood, street = "", number = userProfileResponse.results.numero, complement = userProfileResponse.results.complement, postalCode = userProfileResponse.results.cep),
             fetchTime = LocalDateTime.now()
         )
 
@@ -674,6 +732,44 @@ class UserRepository @Inject constructor(
 
         val response = try {
             userService.editProfile(accessToken = accessToken, editProfileRequest = request)
+        } catch (ex: CancellationException) {
+            throw ex
+        } catch (ex: KotlinNullPointerException) {
+            return Either.left(InvalidAuthenticationException())
+        } catch (ex: HttpException) {
+
+            val errorBodyResponse: ErrorBodyResponse? = moshi.responseError(ex.response())
+
+            return if (ex.code() == 400) {
+                Either.left(InvalidAuthenticationException())
+            } else if (ex.code() == 409 && errorBodyResponse != null) {
+                Either.right(ErrorResource(errorBodyResponse.message))
+            } else {
+                Either.right(ErrorResource(data = null as String?))
+            }
+
+        } catch (ex: EOFException) {
+            return Either.left(ex)
+        } catch (ex: JsonEncodingException) {
+            return Either.left(ex)
+        } catch (ex: IOException) {
+            return Either.left(ConnectionErrorException(ex))
+        } catch (t: Throwable) {
+            return Either.left(t)
+        }
+
+        return Either.right(SuccessResource(data = null))
+    }
+
+    private suspend fun updateAvatarRequest(
+        accessToken: String,
+        avatar: File
+    ): Either<Throwable, Resource<Nothing?, String?>> {
+
+        val response = try {
+            val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), avatar)
+            val requestBody = MultipartBody.Part.createFormData("image", avatar.name, requestFile)
+            userService.updateAvatar(authorization = accessToken, requestBody)
         } catch (ex: CancellationException) {
             throw ex
         } catch (ex: KotlinNullPointerException) {

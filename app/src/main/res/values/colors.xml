@@ -33,7 +33,7 @@
     <color name="telenetColorCardLabel">#5e6265</color>
 
     <color name="telenetColorStatementTitle">#45484a</color>
-    <color name="telenetColorStatementSelectorSelected">#7bab39</color>
+    <color name="telenetColorStatementSelectorSelected">#246E46</color>
     <color name="telenetColorStatementSelectorUnselected">#5e6265</color>
     <color name="telenetColorOnStatement">#212121</color>
     <color name="telenetColorStatementTime">#5e6265</color>
