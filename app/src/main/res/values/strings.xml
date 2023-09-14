@@ -95,6 +95,7 @@
     <string name="initialization_forgot_password_confirmation_title">E-mail enviado</string>
     <string name="initialization_forgot_password_confirmation_first_access_message">Enviamos um e-mail com instruções para o endereço associado à sua conta, confira sua caixa de entrada.</string>
     <string name="initialization_forgot_password_confirmation_login">Fazer login</string>
+    <string name="initialization_forgot_password_invalid_recovery">Já enviamos um e-mail com instruções para o endereço associado à sua conta.</string>
 
     <!-- Initialization Recovery Password Success -->
     <string name="recovery_password_success_title">E-mail enviado</string>

@@ -29,6 +29,7 @@ val PT_BR = Locale("pt", "BR")
 object AppPreferencesKeys {
     const val DEVICE_ID = "deviceId"
     const val IS_INITIALIZED = "initialized"
+    const val LAST_PASSWORD_REQUEST_DATE = "lastPasswordRequestDate"
 
     const val MOCK_CPF = "mockCpf" //TODO REMOVER
     const val MOCK_PASSWORD = "mockPassword" //TODO REMOVER

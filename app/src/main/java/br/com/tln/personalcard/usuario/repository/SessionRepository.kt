@@ -217,7 +217,6 @@ class SessionRepository @Inject constructor(
                 authorization = accessToken.formattedToken
             )
             val data = response.results
-
             sessionPreferences.setFcmSentToken(deviceToken)
         } catch (ex: CancellationException) {
             throw ex

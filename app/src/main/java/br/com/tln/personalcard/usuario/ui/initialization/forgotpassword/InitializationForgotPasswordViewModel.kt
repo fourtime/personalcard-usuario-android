@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import arrow.core.Either
 import br.com.tln.personalcard.usuario.BuildConfig
+import br.com.tln.personalcard.usuario.DEVICE_NAME
 import br.com.tln.personalcard.usuario.R
 import br.com.tln.personalcard.usuario.core.BaseViewModel
 import br.com.tln.personalcard.usuario.core.ErrorResource
@@ -12,14 +13,18 @@ import br.com.tln.personalcard.usuario.core.Event
 import br.com.tln.personalcard.usuario.core.LoadingResource
 import br.com.tln.personalcard.usuario.core.Resource
 import br.com.tln.personalcard.usuario.core.SuccessResource
+import br.com.tln.personalcard.usuario.entity.Device
 import br.com.tln.personalcard.usuario.preferences.AppPreferences
 import br.com.tln.personalcard.usuario.provider.ResourceProvider
 import br.com.tln.personalcard.usuario.repository.SessionRepository
 import br.com.tln.personalcard.usuario.repository.UserRepository
 import br.com.tln.personalcard.usuario.webservice.request.RecoveryPasswordRequest
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.ZoneOffset
 import javax.inject.Inject
 
 class InitializationForgotPasswordViewModel @Inject constructor(
@@ -40,6 +45,12 @@ class InitializationForgotPasswordViewModel @Inject constructor(
             liveData.postValue(!it.isNullOrEmpty())
         }
 
+        liveData
+    }
+
+    val canRecover: MutableLiveData<Boolean> by lazy {
+        val liveData = MediatorLiveData<Boolean>()
+        liveData.postValue(appPreferences.getCanRequestPassword())
         liveData
     }
 
@@ -140,6 +151,7 @@ class InitializationForgotPasswordViewModel @Inject constructor(
         firstAccess: Boolean,
         valueListener: (Resource<Nothing?, Nothing?>) -> Unit
     ) {
+        appPreferences.setPasswordRequested()
         valueListener(SuccessResource(data = null))
         navigator?.navigateToRecoveryPasswordSuccess(cpf = cpf, firstAccess = firstAccess)
     }

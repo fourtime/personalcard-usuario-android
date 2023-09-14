@@ -13,16 +13,23 @@ import br.com.tln.personalcard.usuario.core.Resource
 import br.com.tln.personalcard.usuario.core.SuccessResource
 import br.com.tln.personalcard.usuario.exception.InvalidAuthenticationException
 import br.com.tln.personalcard.usuario.model.Account
+import br.com.tln.personalcard.usuario.preferences.AppPreferences
 import br.com.tln.personalcard.usuario.provider.ResourceProvider
+import br.com.tln.personalcard.usuario.repository.SessionRepository
 import br.com.tln.personalcard.usuario.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.ZoneOffset
 import javax.inject.Inject
 
 class InitializationPasswordViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider,
-    private val userRepository: UserRepository
+    private val sessionRepository: SessionRepository,
+    private val userRepository: UserRepository,
+    private val appPreferences: AppPreferences
 ) : BaseViewModel<InitializationPasswordNavigator>() {
 
     lateinit var cpf: String
@@ -42,8 +49,11 @@ class InitializationPasswordViewModel @Inject constructor(
 
 
     fun forgotPasswordClicked() {
-        _errorMessageLiveData.postValue(Event(""))
-        navigator?.navigateToForgotPassword()
+        if (appPreferences.getCanRequestPassword()) {
+            navigator?.navigateToForgotPassword()
+        } else {
+            _errorMessageLiveData.postValue(Event(resourceProvider.getString(R.string.initialization_forgot_password_invalid_recovery)))
+        }
     }
 
     fun continueClicked(): LiveData<Resource<Nothing?, String?>>? {
